@@ -2,7 +2,7 @@
 
 > 本文系统讲解一般的 Decision-Focused Learning（DFL），以线性目标的 predict-then-optimize 为主线，再扩展到非线性优化、组合决策与部分反馈。文中标为“推导”的内容是基于明确假设的教学推演；论文贡献与定理条件另行注明。本文是理论入门与代表性文献导读，不是完整文献综述或最新论文排行榜。
 
-业务应用可配合阅读：[端到端学习与 DFL：Coin Treatment Case](./end_to_end_decision_learning.md)。
+业务应用可配合阅读：[端到端学习与 DFL：Coin Treatment Case](端到端决策学习-以金币档位为例.md)。
 
 ## 1. DFL 究竟在学习什么？
 
