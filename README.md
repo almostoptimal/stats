@@ -9,4 +9,4 @@
 
 - [现代统计思想：复杂理论背后的统计哲学](notes/modern-statistical-thinking.md)：按目标与识别、推断与误差控制、决策与适应组织现代统计的重要思想，涵盖贝叶斯、高维、鲁棒、半参数因果、依赖、信息论、分布漂移与在线学习。
 
-- [从计算不可约性到未来科学范式：结构、统计与决策的统一视角](notes/computational-irreducibility-scientific-paradigms.md)：区分混沌、不可积与计算不可约性，分析宏观闭合、统计保证、决策损失及 AI 科研的证据边界。
+- [从计算不可约性到未来科学范式](notes/computational-irreducibility-scientific-paradigms.md)：从三体问题、数学结构与宏观规律，讨论现代统计、决策、量化投资和 AI 科研，汇总统一的科学哲学与七条研究原则。
