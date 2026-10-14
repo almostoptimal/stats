@@ -472,9 +472,9 @@ $$
 自回归语言模型采用
 
 $$
-P_\theta(x_{1:L})=\prod_{t=1}^{L}P_\theta(x_t\mid x_{<t}),
+P_\theta(x_{1:L})=\prod_{t=1}^{L}P_\theta(x_t\mid x_{\lt t}),
 \qquad
-\mathcal L(\theta)=-\sum_t\log P_\theta(x_t\mid x_{<t}).
+\mathcal L(\theta)=-\sum_t\log P_\theta(x_t\mid x_{\lt t}).
 $$
 
 链式分解本身是概率恒等式；能够学习和泛化，还依赖跨位置、跨序列共享参数及数据中的规律。Transformer 的自注意力提供了一种内容依赖的信息聚合机制，参见 [Vaswani 等（2017）](https://arxiv.org/abs/1706.03762)。
