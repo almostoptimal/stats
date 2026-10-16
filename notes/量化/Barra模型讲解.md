@@ -213,23 +213,24 @@ $$\hat u_{t} = r_t - X\hat f_t$$
 1. **EWMA**：$`\lambda = 0.5^{1/h}`$，用 $`\lambda^{T-t}`$ 加权。
    经验：**波动率用短半衰期，相关性用长半衰期**（波动切得快，相关需要更长样本才估得稳）。
 2. **Newey-West（HAC）**：动量、流动性等因子收益自相关明显，普通样本协方差会低估。
-
-   $$F = \hat\Gamma_0 + \sum_{\ell=1}^{q}\Big(1-\tfrac{\ell}{q+1}\Big)\big(\hat\Gamma_{\ell} + \hat\Gamma_{\ell}^{\top}\big)$$
-
 3. **特征根调整**：样本 $`F`$ 在小特征根方向噪声大，用模拟 / bootstrap 修正（思路同 shrinkage）。
 4. **VRA 缩放**：见 Step 3。
+
+Newey-West 对滞后 $`q`$ 阶自协方差做 Bartlett 加权：
+
+$$F = \hat\Gamma_0 + \sum_{\ell=1}^{q}\Big(1-\tfrac{\ell}{q+1}\Big)\big(\hat\Gamma_{\ell} + \hat\Gamma_{\ell}^{\top}\big)$$
 
 **Step 2｜特异性方差 $`\Delta`$**
 
 1. 对每只股票的 $`\hat u_{i,t}`$ 做 EWMA 波动（半衰期比 $`F`$ 更短）
-2. **Vasicek 贝叶斯收缩**
-
-   $$\hat\sigma_i^{2} = \frac{\nu\,\bar\sigma^{2}_{\text{组}} + n_i\,\hat\sigma^{2}_{i,\text{样本}}}{\nu + n_i}$$
-
-   组 = 市值分位 × 行业；$`\nu`$ 是先验等效样本量。
-   新股 / 短历史 → $`n_i`$ 小 → 估计几乎完全退化为组内均值。
+2. **Vasicek 贝叶斯收缩**：向"市值分位 × 行业"的组内均值收缩
 3. 停牌、涨跌停期间的方差须单独处理，不能简单当 0
 4. VRA 缩放
+
+$$\hat\sigma_i^{2} = \frac{\nu\,\bar\sigma^{2}_{\text{组}} + n_i\,\hat\sigma^{2}_{i,\text{样本}}}{\nu + n_i}$$
+
+组 = 市值分位 × 行业；$`\nu`$ 是先验等效样本量。
+新股 / 短历史 → $`n_i`$ 小 → 估计几乎完全退化为组内均值。
 
 **Step 3｜VRA（Volatility Regime Adjustment）— Barra 的独门**
 
