@@ -1,0 +1,52 @@
+<svg viewBox="0 0 680 376" width="680" height="376" xmlns="http://www.w3.org/2000/svg">
+<title>Barra 的两阶段估计流程</title>
+<desc>阶段 A 每天做一次横截面回归得到因子收益与残差，阶段 B 在时间序列上估计协方差并组装。</desc>
+<defs><marker id="ar" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M2 1L8 5L2 9" fill="none" stroke="context-stroke" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></marker></defs>
+<rect x="0" y="0" width="680" height="376" fill="#FFFFFF"/>
+<text x="30.0" y="30.0" font-family="system-ui,-apple-system,Segoe UI,Roboto,Microsoft YaHei,sans-serif" font-size="15" font-weight="600" fill="#1F2937" text-anchor="start">Barra 两阶段估计全流程</text>
+<rect x="30.0" y="48.0" width="300.0" height="216.0" rx="14.0" fill="#E6F1FB" stroke="#185FA5" stroke-width="0.5"/>
+<text x="50.0" y="74.0" font-family="system-ui,-apple-system,Segoe UI,Roboto,Microsoft YaHei,sans-serif" font-size="14" font-weight="600" fill="#0C447C" text-anchor="start">阶段 A · 横截面回归</text>
+<text x="50.0" y="94.0" font-family="system-ui,-apple-system,Segoe UI,Roboto,Microsoft YaHei,sans-serif" font-size="11" font-weight="400" fill="#0C447C" text-anchor="start">每个交易日做一次</text>
+<path d="M50.0 102.0 L310.0 102.0" fill="none" stroke="#85B7EB" stroke-width="0.5" stroke-linejoin="round" stroke-linecap="round"/>
+<circle cx="58.0" cy="120.0" r="8.0" fill="#B5D4F4" stroke="#0C447C" stroke-width="0.5"/>
+<text x="58.0" y="120.0" font-family="system-ui,-apple-system,Segoe UI,Roboto,Microsoft YaHei,sans-serif" font-size="10" font-weight="600" fill="#0C447C" text-anchor="middle" dominant-baseline="central">1</text>
+<text x="74.0" y="124.0" font-family="system-ui,-apple-system,Segoe UI,Roboto,Microsoft YaHei,sans-serif" font-size="12" font-weight="400" fill="#0C447C" text-anchor="start">取当天的因子暴露 X（t−1 已知）</text>
+<circle cx="58.0" cy="146.0" r="8.0" fill="#B5D4F4" stroke="#0C447C" stroke-width="0.5"/>
+<text x="58.0" y="146.0" font-family="system-ui,-apple-system,Segoe UI,Roboto,Microsoft YaHei,sans-serif" font-size="10" font-weight="600" fill="#0C447C" text-anchor="middle" dominant-baseline="central">2</text>
+<text x="74.0" y="150.0" font-family="system-ui,-apple-system,Segoe UI,Roboto,Microsoft YaHei,sans-serif" font-size="12" font-weight="400" fill="#0C447C" text-anchor="start">行业哑变量做纯化、丢一列</text>
+<circle cx="58.0" cy="172.0" r="8.0" fill="#B5D4F4" stroke="#0C447C" stroke-width="0.5"/>
+<text x="58.0" y="172.0" font-family="system-ui,-apple-system,Segoe UI,Roboto,Microsoft YaHei,sans-serif" font-size="10" font-weight="600" fill="#0C447C" text-anchor="middle" dominant-baseline="central">3</text>
+<text x="74.0" y="176.0" font-family="system-ui,-apple-system,Segoe UI,Roboto,Microsoft YaHei,sans-serif" font-size="12" font-weight="400" fill="#0C447C" text-anchor="start">√市值加权，跑一次 WLS</text>
+<circle cx="58.0" cy="198.0" r="8.0" fill="#B5D4F4" stroke="#0C447C" stroke-width="0.5"/>
+<text x="58.0" y="198.0" font-family="system-ui,-apple-system,Segoe UI,Roboto,Microsoft YaHei,sans-serif" font-size="10" font-weight="600" fill="#0C447C" text-anchor="middle" dominant-baseline="central">4</text>
+<text x="74.0" y="202.0" font-family="system-ui,-apple-system,Segoe UI,Roboto,Microsoft YaHei,sans-serif" font-size="12" font-weight="400" fill="#0C447C" text-anchor="start">得到当天的 f_t（K 个）</text>
+<circle cx="58.0" cy="224.0" r="8.0" fill="#B5D4F4" stroke="#0C447C" stroke-width="0.5"/>
+<text x="58.0" y="224.0" font-family="system-ui,-apple-system,Segoe UI,Roboto,Microsoft YaHei,sans-serif" font-size="10" font-weight="600" fill="#0C447C" text-anchor="middle" dominant-baseline="central">5</text>
+<text x="74.0" y="228.0" font-family="system-ui,-apple-system,Segoe UI,Roboto,Microsoft YaHei,sans-serif" font-size="12" font-weight="400" fill="#0C447C" text-anchor="start">顺带拿到残差 u_t（N 个）</text>
+<path d="M340.0 156.0 L380.0 156.0" fill="none" stroke="#9CA3AF" stroke-width="1.8" marker-end="url(#ar)" stroke-linejoin="round" stroke-linecap="round"/>
+<text x="360.0" y="142.0" font-family="system-ui,-apple-system,Segoe UI,Roboto,Microsoft YaHei,sans-serif" font-size="11" font-weight="400" fill="#6B7280" text-anchor="middle">重复</text>
+<text x="360.0" y="178.0" font-family="system-ui,-apple-system,Segoe UI,Roboto,Microsoft YaHei,sans-serif" font-size="11" font-weight="400" fill="#6B7280" text-anchor="middle">T 天</text>
+<rect x="392.0" y="48.0" width="258.0" height="216.0" rx="14.0" fill="#FAEEDA" stroke="#854F0B" stroke-width="0.5"/>
+<text x="412.0" y="74.0" font-family="system-ui,-apple-system,Segoe UI,Roboto,Microsoft YaHei,sans-serif" font-size="14" font-weight="600" fill="#633806" text-anchor="start">阶段 B · 时序汇总</text>
+<text x="412.0" y="94.0" font-family="system-ui,-apple-system,Segoe UI,Roboto,Microsoft YaHei,sans-serif" font-size="11" font-weight="400" fill="#633806" text-anchor="start">每天重算一次，吃过去 40–250 天</text>
+<path d="M412.0 102.0 L630.0 102.0" fill="none" stroke="#EF9F27" stroke-width="0.5" stroke-linejoin="round" stroke-linecap="round"/>
+<circle cx="420.0" cy="120.0" r="8.0" fill="#FAC775" stroke="#633806" stroke-width="0.5"/>
+<text x="420.0" y="120.0" font-family="system-ui,-apple-system,Segoe UI,Roboto,Microsoft YaHei,sans-serif" font-size="10" font-weight="600" fill="#633806" text-anchor="middle" dominant-baseline="central">1</text>
+<text x="436.0" y="124.0" font-family="system-ui,-apple-system,Segoe UI,Roboto,Microsoft YaHei,sans-serif" font-size="12" font-weight="400" fill="#633806" text-anchor="start">f 序列 → EWMA + HAC → F</text>
+<circle cx="420.0" cy="146.0" r="8.0" fill="#FAC775" stroke="#633806" stroke-width="0.5"/>
+<text x="420.0" y="146.0" font-family="system-ui,-apple-system,Segoe UI,Roboto,Microsoft YaHei,sans-serif" font-size="10" font-weight="600" fill="#633806" text-anchor="middle" dominant-baseline="central">2</text>
+<text x="436.0" y="150.0" font-family="system-ui,-apple-system,Segoe UI,Roboto,Microsoft YaHei,sans-serif" font-size="12" font-weight="400" fill="#633806" text-anchor="start">u 序列 → 自由度修正 + 收缩 → Δ</text>
+<circle cx="420.0" cy="172.0" r="8.0" fill="#FAC775" stroke="#633806" stroke-width="0.5"/>
+<text x="420.0" y="172.0" font-family="system-ui,-apple-system,Segoe UI,Roboto,Microsoft YaHei,sans-serif" font-size="10" font-weight="600" fill="#633806" text-anchor="middle" dominant-baseline="central">3</text>
+<text x="436.0" y="176.0" font-family="system-ui,-apple-system,Segoe UI,Roboto,Microsoft YaHei,sans-serif" font-size="12" font-weight="400" fill="#633806" text-anchor="start">Eigenfactor 调整（防优化器）</text>
+<circle cx="420.0" cy="198.0" r="8.0" fill="#FAC775" stroke="#633806" stroke-width="0.5"/>
+<text x="420.0" y="198.0" font-family="system-ui,-apple-system,Segoe UI,Roboto,Microsoft YaHei,sans-serif" font-size="10" font-weight="600" fill="#633806" text-anchor="middle" dominant-baseline="central">4</text>
+<text x="436.0" y="202.0" font-family="system-ui,-apple-system,Segoe UI,Roboto,Microsoft YaHei,sans-serif" font-size="12" font-weight="400" fill="#633806" text-anchor="start">VRA 波动区制校准</text>
+<circle cx="420.0" cy="224.0" r="8.0" fill="#FAC775" stroke="#633806" stroke-width="0.5"/>
+<text x="420.0" y="224.0" font-family="system-ui,-apple-system,Segoe UI,Roboto,Microsoft YaHei,sans-serif" font-size="10" font-weight="600" fill="#633806" text-anchor="middle" dominant-baseline="central">5</text>
+<text x="436.0" y="228.0" font-family="system-ui,-apple-system,Segoe UI,Roboto,Microsoft YaHei,sans-serif" font-size="12" font-weight="400" fill="#633806" text-anchor="start">组装 Σ = X F Xᵀ + Δ</text>
+<rect x="30.0" y="280.0" width="620.0" height="78.0" rx="10.0" fill="#F3F4F6" stroke="#E5E7EB" stroke-width="0.5"/>
+<text x="48.0" y="302.0" font-family="system-ui,-apple-system,Segoe UI,Roboto,Microsoft YaHei,sans-serif" font-size="12" font-weight="400" fill="#1F2937" text-anchor="start">阶段 A 每交易日执行一次；阶段 B 每日重算，估计窗口为 40–250 个交易日。</text>
+<text x="48.0" y="322.0" font-family="system-ui,-apple-system,Segoe UI,Roboto,Microsoft YaHei,sans-serif" font-size="12" font-weight="400" fill="#1F2937" text-anchor="start">K≈42，估计 42×42 的 F 要求 T≫K；月频下每年仅 12 个观测，累积 250 期需约 20 年。</text>
+<text x="48.0" y="342.0" font-family="system-ui,-apple-system,Segoe UI,Roboto,Microsoft YaHei,sans-serif" font-size="12" font-weight="400" fill="#1F2937" text-anchor="start">文献中的月度 R²≈0.28 属评估口径：以月频收益重跑截面回归并取 12 个月滚动均值，与运行频率无关。</text>
+</svg>

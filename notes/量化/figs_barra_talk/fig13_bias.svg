@@ -1,0 +1,47 @@
+<svg viewBox="0 0 680 348" width="680" height="348" xmlns="http://www.w3.org/2000/svg">
+<title>用偏差统计量验收</title>
+<desc>按预测波动分十组计算的偏差统计量柱状图，合格区间为零点八到一点二五。</desc>
+<defs><marker id="ar" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M2 1L8 5L2 9" fill="none" stroke="context-stroke" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></marker></defs>
+<rect x="0" y="0" width="680" height="348" fill="#FFFFFF"/>
+<text x="30.0" y="30.0" font-family="system-ui,-apple-system,Segoe UI,Roboto,Microsoft YaHei,sans-serif" font-size="15" font-weight="600" fill="#1F2937" text-anchor="start">风险模型的验收标准：分层偏差统计量</text>
+<rect x="90.0" y="103.1" width="520.0" height="52.9" rx="0.0" fill="#E7F5E9" stroke="None" stroke-width="0.5"/>
+<path d="M90.0 103.1 L610.0 103.1" fill="none" stroke="#3F7D44" stroke-width="1.0" stroke-dasharray="5 4" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M90.0 156.0 L610.0 156.0" fill="none" stroke="#3F7D44" stroke-width="1.0" stroke-dasharray="5 4" stroke-linejoin="round" stroke-linecap="round"/>
+<text x="604.0" y="96.1" font-family="system-ui,-apple-system,Segoe UI,Roboto,Microsoft YaHei,sans-serif" font-size="11" font-weight="600" fill="#2F5B2B" text-anchor="end">合格带 0.8 – 1.25</text>
+<rect x="99.4" y="83.2" width="33.3" height="166.8" rx="2.0" fill="#DC2626" stroke="#DC2626" stroke-width="0.0"/>
+<text x="116.0" y="75.2" font-family="system-ui,-apple-system,Segoe UI,Roboto,Microsoft YaHei,sans-serif" font-size="10" font-weight="600" fill="#DC2626" text-anchor="middle">1.42</text>
+<text x="116.0" y="268.0" font-family="system-ui,-apple-system,Segoe UI,Roboto,Microsoft YaHei,sans-serif" font-size="10" font-weight="400" fill="#6B7280" text-anchor="middle">1</text>
+<rect x="151.4" y="96.1" width="33.3" height="153.9" rx="2.0" fill="#DC2626" stroke="#DC2626" stroke-width="0.0"/>
+<text x="168.0" y="88.1" font-family="system-ui,-apple-system,Segoe UI,Roboto,Microsoft YaHei,sans-serif" font-size="10" font-weight="600" fill="#DC2626" text-anchor="middle">1.31</text>
+<text x="168.0" y="268.0" font-family="system-ui,-apple-system,Segoe UI,Roboto,Microsoft YaHei,sans-serif" font-size="10" font-weight="400" fill="#6B7280" text-anchor="middle">2</text>
+<rect x="203.4" y="110.2" width="33.3" height="139.8" rx="2.0" fill="#2563EB" stroke="#2563EB" stroke-width="0.0"/>
+<text x="220.0" y="102.2" font-family="system-ui,-apple-system,Segoe UI,Roboto,Microsoft YaHei,sans-serif" font-size="10" font-weight="600" fill="#2563EB" text-anchor="middle">1.19</text>
+<text x="220.0" y="268.0" font-family="system-ui,-apple-system,Segoe UI,Roboto,Microsoft YaHei,sans-serif" font-size="10" font-weight="400" fill="#6B7280" text-anchor="middle">3</text>
+<rect x="255.4" y="118.4" width="33.3" height="131.6" rx="2.0" fill="#2563EB" stroke="#2563EB" stroke-width="0.0"/>
+<text x="272.0" y="110.4" font-family="system-ui,-apple-system,Segoe UI,Roboto,Microsoft YaHei,sans-serif" font-size="10" font-weight="600" fill="#2563EB" text-anchor="middle">1.12</text>
+<text x="272.0" y="268.0" font-family="system-ui,-apple-system,Segoe UI,Roboto,Microsoft YaHei,sans-serif" font-size="10" font-weight="400" fill="#6B7280" text-anchor="middle">4</text>
+<rect x="307.4" y="125.5" width="33.3" height="124.5" rx="2.0" fill="#2563EB" stroke="#2563EB" stroke-width="0.0"/>
+<text x="324.0" y="117.5" font-family="system-ui,-apple-system,Segoe UI,Roboto,Microsoft YaHei,sans-serif" font-size="10" font-weight="600" fill="#2563EB" text-anchor="middle">1.06</text>
+<text x="324.0" y="268.0" font-family="system-ui,-apple-system,Segoe UI,Roboto,Microsoft YaHei,sans-serif" font-size="10" font-weight="400" fill="#6B7280" text-anchor="middle">5</text>
+<rect x="359.4" y="131.3" width="33.3" height="118.7" rx="2.0" fill="#2563EB" stroke="#2563EB" stroke-width="0.0"/>
+<text x="376.0" y="123.3" font-family="system-ui,-apple-system,Segoe UI,Roboto,Microsoft YaHei,sans-serif" font-size="10" font-weight="600" fill="#2563EB" text-anchor="middle">1.01</text>
+<text x="376.0" y="268.0" font-family="system-ui,-apple-system,Segoe UI,Roboto,Microsoft YaHei,sans-serif" font-size="10" font-weight="400" fill="#6B7280" text-anchor="middle">6</text>
+<rect x="411.4" y="136.0" width="33.3" height="114.0" rx="2.0" fill="#2563EB" stroke="#2563EB" stroke-width="0.0"/>
+<text x="428.0" y="128.0" font-family="system-ui,-apple-system,Segoe UI,Roboto,Microsoft YaHei,sans-serif" font-size="10" font-weight="600" fill="#2563EB" text-anchor="middle">0.97</text>
+<text x="428.0" y="268.0" font-family="system-ui,-apple-system,Segoe UI,Roboto,Microsoft YaHei,sans-serif" font-size="10" font-weight="400" fill="#6B7280" text-anchor="middle">7</text>
+<rect x="463.4" y="139.6" width="33.3" height="110.4" rx="2.0" fill="#2563EB" stroke="#2563EB" stroke-width="0.0"/>
+<text x="480.0" y="131.6" font-family="system-ui,-apple-system,Segoe UI,Roboto,Microsoft YaHei,sans-serif" font-size="10" font-weight="600" fill="#2563EB" text-anchor="middle">0.94</text>
+<text x="480.0" y="268.0" font-family="system-ui,-apple-system,Segoe UI,Roboto,Microsoft YaHei,sans-serif" font-size="10" font-weight="400" fill="#6B7280" text-anchor="middle">8</text>
+<rect x="515.4" y="144.2" width="33.3" height="105.8" rx="2.0" fill="#2563EB" stroke="#2563EB" stroke-width="0.0"/>
+<text x="532.0" y="136.2" font-family="system-ui,-apple-system,Segoe UI,Roboto,Microsoft YaHei,sans-serif" font-size="10" font-weight="600" fill="#2563EB" text-anchor="middle">0.90</text>
+<text x="532.0" y="268.0" font-family="system-ui,-apple-system,Segoe UI,Roboto,Microsoft YaHei,sans-serif" font-size="10" font-weight="400" fill="#6B7280" text-anchor="middle">9</text>
+<rect x="567.4" y="148.9" width="33.3" height="101.1" rx="2.0" fill="#2563EB" stroke="#2563EB" stroke-width="0.0"/>
+<text x="584.0" y="140.9" font-family="system-ui,-apple-system,Segoe UI,Roboto,Microsoft YaHei,sans-serif" font-size="10" font-weight="600" fill="#2563EB" text-anchor="middle">0.86</text>
+<text x="584.0" y="268.0" font-family="system-ui,-apple-system,Segoe UI,Roboto,Microsoft YaHei,sans-serif" font-size="10" font-weight="400" fill="#6B7280" text-anchor="middle">10</text>
+<path d="M90.0 250.0 L610.0 250.0" fill="none" stroke="#9CA3AF" stroke-width="1.2" stroke-linejoin="round" stroke-linecap="round"/>
+<text x="82.0" y="66.0" font-family="system-ui,-apple-system,Segoe UI,Roboto,Microsoft YaHei,sans-serif" font-size="12" font-weight="400" fill="#6B7280" text-anchor="start">B</text>
+<text x="350.0" y="288.0" font-family="system-ui,-apple-system,Segoe UI,Roboto,Microsoft YaHei,sans-serif" font-size="12" font-weight="400" fill="#6B7280" text-anchor="middle">按事前预测波动升序分为 10 组（第 1 组预测波动最低）</text>
+<rect x="30.0" y="296.0" width="620.0" height="52.0" rx="10.0" fill="#F3F4F6" stroke="#E5E7EB" stroke-width="0.5"/>
+<text x="48.0" y="318.0" font-family="system-ui,-apple-system,Segoe UI,Roboto,Microsoft YaHei,sans-serif" font-size="12" font-weight="400" fill="#1F2937" text-anchor="start">第 1、2 组（预测波动最低组）B 显著大于 1，表明模型在低波动区间系统性低估。</text>
+<text x="48.0" y="338.0" font-family="system-ui,-apple-system,Segoe UI,Roboto,Microsoft YaHei,sans-serif" font-size="12" font-weight="400" fill="#1F2937" text-anchor="start">总体 B≈1.0 会掩盖上述结构性偏差，因此须分层检验。</text>
+</svg>
