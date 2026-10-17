@@ -1,0 +1,84 @@
+<svg viewBox="0 0 680 440" width="680" height="440" xmlns="http://www.w3.org/2000/svg">
+<title>Barra 阶段 B：因子协方差 F 与特异方差 Δ 的四步流水线</title>
+<desc>因子收益序列经 EWMA、Newey-West、Eigenfactor 调整、VRA 得到因子协方差 F；残差序列经 EWMA、自由度修正、Vasicek 收缩、VRA 得到特异方差 Δ；两者组装为股票协方差矩阵并用偏差统计量验收。</desc>
+<defs>
+  <marker id="a" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+    <path d="M2 1L8 5L2 9" fill="none" stroke="context-stroke" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+  </marker>
+</defs>
+<rect x="0" y="0" width="680" height="440" fill="#FFFFFF"/>
+
+<rect x="30" y="16" width="270" height="46" rx="10" fill="#E6F1FB" stroke="#185FA5" stroke-width="0.5"/>
+<text x="165" y="36" text-anchor="middle" font-family="system-ui,sans-serif" font-size="13" font-weight="500" fill="#0C447C">因子收益序列</text>
+<text x="165" y="52" text-anchor="middle" font-family="system-ui,sans-serif" font-size="11" fill="#185FA5">每日一条 f_t，共 T 期，K 维</text>
+
+<rect x="380" y="16" width="270" height="46" rx="10" fill="#FAEEDA" stroke="#854F0B" stroke-width="0.5"/>
+<text x="515" y="36" text-anchor="middle" font-family="system-ui,sans-serif" font-size="13" font-weight="500" fill="#633806">残差序列</text>
+<text x="515" y="52" text-anchor="middle" font-family="system-ui,sans-serif" font-size="11" fill="#854F0B">每日一条 u_t，共 T 期，N 维</text>
+
+<path d="M165 62 L165 104" fill="none" stroke="#185FA5" stroke-width="1.5" marker-end="url(#a)"/>
+<path d="M515 62 L515 104" fill="none" stroke="#854F0B" stroke-width="1.5" marker-end="url(#a)"/>
+
+<rect x="20" y="106" width="290" height="262" rx="14" fill="#F2F7FD" stroke="#85B7EB" stroke-width="0.5"/>
+<text x="38" y="128" font-family="system-ui,sans-serif" font-size="13" font-weight="500" fill="#0C447C">F 支路 · 因子协方差（K×K）</text>
+<path d="M38 138 L292 138" fill="none" stroke="#B5D4F4" stroke-width="0.5"/>
+
+<rect x="36" y="150" width="258" height="46" rx="9" fill="#FFFFFF" stroke="#85B7EB" stroke-width="0.5"/>
+<circle cx="56" cy="173" r="9" fill="#B5D4F4" stroke="#185FA5" stroke-width="0.5"/>
+<text x="56" y="173" text-anchor="middle" dominant-baseline="central" font-family="system-ui,sans-serif" font-size="11" fill="#0C447C">1</text>
+<text x="72" y="168" font-family="system-ui,sans-serif" font-size="12" fill="#0C447C">EWMA（波动与相关分开）</text>
+<text x="72" y="185" font-family="system-ui,sans-serif" font-size="11" fill="#185FA5">半衰期 42（波动） / 200（相关）</text>
+
+<rect x="36" y="206" width="258" height="46" rx="9" fill="#FFFFFF" stroke="#85B7EB" stroke-width="0.5"/>
+<circle cx="56" cy="229" r="9" fill="#B5D4F4" stroke="#185FA5" stroke-width="0.5"/>
+<text x="56" y="229" text-anchor="middle" dominant-baseline="central" font-family="system-ui,sans-serif" font-size="11" fill="#0C447C">2</text>
+<text x="72" y="224" font-family="system-ui,sans-serif" font-size="12" fill="#0C447C">Newey-West 自相关修正</text>
+<text x="72" y="241" font-family="system-ui,sans-serif" font-size="11" fill="#185FA5">滞后 2（波动） / 1（相关）</text>
+
+<rect x="36" y="262" width="258" height="46" rx="9" fill="#FFFFFF" stroke="#85B7EB" stroke-width="0.5"/>
+<circle cx="56" cy="285" r="9" fill="#B5D4F4" stroke="#185FA5" stroke-width="0.5"/>
+<text x="56" y="285" text-anchor="middle" dominant-baseline="central" font-family="system-ui,sans-serif" font-size="11" fill="#0C447C">3</text>
+<text x="72" y="280" font-family="system-ui,sans-serif" font-size="12" fill="#0C447C">Eigenfactor 蒙特卡洛调整</text>
+<text x="72" y="297" font-family="system-ui,sans-serif" font-size="11" fill="#185FA5">放大小特征根方向，抵住优化器</text>
+
+<rect x="36" y="318" width="258" height="46" rx="9" fill="#FFFFFF" stroke="#85B7EB" stroke-width="0.5"/>
+<circle cx="56" cy="341" r="9" fill="#B5D4F4" stroke="#185FA5" stroke-width="0.5"/>
+<text x="56" y="341" text-anchor="middle" dominant-baseline="central" font-family="system-ui,sans-serif" font-size="11" fill="#0C447C">4</text>
+<text x="72" y="336" font-family="system-ui,sans-serif" font-size="12" fill="#0C447C">VRA 波动区制校准</text>
+<text x="72" y="353" font-family="system-ui,sans-serif" font-size="11" fill="#185FA5">F ← F × B（不是 ×√B），hl 42</text>
+
+<rect x="370" y="106" width="290" height="262" rx="14" fill="#FEF7EC" stroke="#EF9F27" stroke-width="0.5"/>
+<text x="388" y="128" font-family="system-ui,sans-serif" font-size="13" font-weight="500" fill="#633806">Δ 支路 · 特异方差（N×N 对角）</text>
+<path d="M388 138 L642 138" fill="none" stroke="#FAC775" stroke-width="0.5"/>
+
+<rect x="386" y="150" width="258" height="46" rx="9" fill="#FFFFFF" stroke="#EF9F27" stroke-width="0.5"/>
+<circle cx="406" cy="173" r="9" fill="#FAC775" stroke="#854F0B" stroke-width="0.5"/>
+<text x="406" y="173" text-anchor="middle" dominant-baseline="central" font-family="system-ui,sans-serif" font-size="11" fill="#633806">1</text>
+<text x="422" y="168" font-family="system-ui,sans-serif" font-size="12" fill="#633806">EWMA 残差平方</text>
+<text x="422" y="185" font-family="system-ui,sans-serif" font-size="11" fill="#854F0B">半衰期 42，停牌期剔除</text>
+
+<rect x="386" y="206" width="258" height="46" rx="9" fill="#FFFFFF" stroke="#EF9F27" stroke-width="0.5"/>
+<circle cx="406" cy="229" r="9" fill="#FAC775" stroke="#854F0B" stroke-width="0.5"/>
+<text x="406" y="229" text-anchor="middle" dominant-baseline="central" font-family="system-ui,sans-serif" font-size="11" fill="#633806">2</text>
+<text x="422" y="224" font-family="system-ui,sans-serif" font-size="12" fill="#633806">自由度修正</text>
+<text x="422" y="241" font-family="system-ui,sans-serif" font-size="11" fill="#854F0B">× N / (N − K)，补回被吸走的噪声</text>
+
+<rect x="386" y="262" width="258" height="46" rx="9" fill="#FFFFFF" stroke="#EF9F27" stroke-width="0.5"/>
+<circle cx="406" cy="285" r="9" fill="#FAC775" stroke="#854F0B" stroke-width="0.5"/>
+<text x="406" y="285" text-anchor="middle" dominant-baseline="central" font-family="system-ui,sans-serif" font-size="11" fill="#633806">3</text>
+<text x="422" y="280" font-family="system-ui,sans-serif" font-size="12" fill="#633806">Vasicek 贝叶斯收缩</text>
+<text x="422" y="297" font-family="system-ui,sans-serif" font-size="11" fill="#854F0B">向「市值分位 × 行业」组均值收，ν = 0.10</text>
+
+<rect x="386" y="318" width="258" height="46" rx="9" fill="#FFFFFF" stroke="#EF9F27" stroke-width="0.5"/>
+<circle cx="406" y="341" r="9" fill="#FAC775" stroke="#854F0B" stroke-width="0.5"/>
+<text x="406" y="341" text-anchor="middle" dominant-baseline="central" font-family="system-ui,sans-serif" font-size="11" fill="#633806">4</text>
+<text x="422" y="336" font-family="system-ui,sans-serif" font-size="12" fill="#633806">VRA 波动区制校准</text>
+<text x="422" y="353" font-family="system-ui,sans-serif" font-size="11" fill="#854F0B">Δ ← Δ × B，半衰期仅 4（最快反应）</text>
+
+<path d="M165 368 L165 392" fill="none" stroke="#185FA5" stroke-width="1.5" marker-end="url(#a)"/>
+<path d="M515 368 L515 392" fill="none" stroke="#854F0B" stroke-width="1.5" marker-end="url(#a)"/>
+
+<rect x="150" y="394" width="380" height="42" rx="10" fill="#EEF6EE" stroke="#4E8C4A" stroke-width="0.5"/>
+<text x="340" y="413" text-anchor="middle" font-family="system-ui,sans-serif" font-size="13" font-weight="500" fill="#2F5B2B">Σ = X F Xᵀ + Δ</text>
+<text x="340" y="428" text-anchor="middle" font-family="system-ui,sans-serif" font-size="11" fill="#4E8C4A">X 为当期暴露，每日重算一次</text>
+</svg>
