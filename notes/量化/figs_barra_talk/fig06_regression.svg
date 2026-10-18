@@ -1,0 +1,110 @@
+<svg viewBox="0 0 680 392" width="680" height="392" xmlns="http://www.w3.org/2000/svg">
+<title>一次横截面回归在做什么</title>
+<desc>散点图：横轴为标准化后的 Size 暴露，纵轴为当日收益，点越大代表市值越大，拟合线斜率即为当日因子收益。</desc>
+<defs><marker id="ar" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M2 1L8 5L2 9" fill="none" stroke="context-stroke" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></marker></defs>
+<rect x="0" y="0" width="680" height="392" fill="#FFFFFF"/>
+<text x="30.0" y="28.0" font-family="system-ui,-apple-system,Segoe UI,Roboto,Microsoft YaHei,sans-serif" font-size="14" font-weight="600" fill="#1F2937" text-anchor="start">单个交易日的横截面加权最小二乘回归</text>
+<rect x="84.0" y="58.0" width="532.0" height="234.0" rx="0.0" fill="#FFFFFF" stroke="#E5E7EB" stroke-width="0.8"/>
+<path d="M84.0 228.8 L616.0 228.8" fill="none" stroke="#E5E7EB" stroke-width="0.6" stroke-linejoin="round" stroke-linecap="round"/>
+<text x="76.0" y="232.8" font-family="system-ui,-apple-system,Segoe UI,Roboto,Microsoft YaHei,sans-serif" font-size="10" font-weight="400" fill="#6B7280" text-anchor="end">-8%</text>
+<path d="M84.0 201.9 L616.0 201.9" fill="none" stroke="#E5E7EB" stroke-width="0.6" stroke-linejoin="round" stroke-linecap="round"/>
+<text x="76.0" y="205.9" font-family="system-ui,-apple-system,Segoe UI,Roboto,Microsoft YaHei,sans-serif" font-size="10" font-weight="400" fill="#6B7280" text-anchor="end">-4%</text>
+<path d="M84.0 175.0 L616.0 175.0" fill="none" stroke="#E5E7EB" stroke-width="0.6" stroke-linejoin="round" stroke-linecap="round"/>
+<text x="76.0" y="179.0" font-family="system-ui,-apple-system,Segoe UI,Roboto,Microsoft YaHei,sans-serif" font-size="10" font-weight="400" fill="#6B7280" text-anchor="end">+0%</text>
+<path d="M84.0 148.1 L616.0 148.1" fill="none" stroke="#E5E7EB" stroke-width="0.6" stroke-linejoin="round" stroke-linecap="round"/>
+<text x="76.0" y="152.1" font-family="system-ui,-apple-system,Segoe UI,Roboto,Microsoft YaHei,sans-serif" font-size="10" font-weight="400" fill="#6B7280" text-anchor="end">+4%</text>
+<path d="M84.0 121.2 L616.0 121.2" fill="none" stroke="#E5E7EB" stroke-width="0.6" stroke-linejoin="round" stroke-linecap="round"/>
+<text x="76.0" y="125.2" font-family="system-ui,-apple-system,Segoe UI,Roboto,Microsoft YaHei,sans-serif" font-size="10" font-weight="400" fill="#6B7280" text-anchor="end">+8%</text>
+<path d="M145.4 58.0 L145.4 292.0" fill="none" stroke="#E5E7EB" stroke-width="0.6" stroke-linejoin="round" stroke-linecap="round"/>
+<text x="145.4" y="310.0" font-family="system-ui,-apple-system,Segoe UI,Roboto,Microsoft YaHei,sans-serif" font-size="10" font-weight="400" fill="#6B7280" text-anchor="middle">-2</text>
+<path d="M247.7 58.0 L247.7 292.0" fill="none" stroke="#E5E7EB" stroke-width="0.6" stroke-linejoin="round" stroke-linecap="round"/>
+<text x="247.7" y="310.0" font-family="system-ui,-apple-system,Segoe UI,Roboto,Microsoft YaHei,sans-serif" font-size="10" font-weight="400" fill="#6B7280" text-anchor="middle">-1</text>
+<path d="M350.0 58.0 L350.0 292.0" fill="none" stroke="#E5E7EB" stroke-width="0.6" stroke-linejoin="round" stroke-linecap="round"/>
+<text x="350.0" y="310.0" font-family="system-ui,-apple-system,Segoe UI,Roboto,Microsoft YaHei,sans-serif" font-size="10" font-weight="400" fill="#6B7280" text-anchor="middle">+0</text>
+<path d="M452.3 58.0 L452.3 292.0" fill="none" stroke="#E5E7EB" stroke-width="0.6" stroke-linejoin="round" stroke-linecap="round"/>
+<text x="452.3" y="310.0" font-family="system-ui,-apple-system,Segoe UI,Roboto,Microsoft YaHei,sans-serif" font-size="10" font-weight="400" fill="#6B7280" text-anchor="middle">+1</text>
+<path d="M554.6 58.0 L554.6 292.0" fill="none" stroke="#E5E7EB" stroke-width="0.6" stroke-linejoin="round" stroke-linecap="round"/>
+<text x="554.6" y="310.0" font-family="system-ui,-apple-system,Segoe UI,Roboto,Microsoft YaHei,sans-serif" font-size="10" font-weight="400" fill="#6B7280" text-anchor="middle">+2</text>
+<circle cx="237.7" cy="146.7" r="2.5" fill="#2563EB" stroke="#FFFFFF" stroke-width="0.6" opacity="0.65"/>
+<circle cx="342.1" cy="208.1" r="4.3" fill="#2563EB" stroke="#FFFFFF" stroke-width="0.6" opacity="0.65"/>
+<circle cx="361.0" cy="191.4" r="2.5" fill="#2563EB" stroke="#FFFFFF" stroke-width="0.6" opacity="0.65"/>
+<circle cx="262.9" cy="145.7" r="5.2" fill="#2563EB" stroke="#FFFFFF" stroke-width="0.6" opacity="0.65"/>
+<circle cx="356.6" cy="178.6" r="2.9" fill="#2563EB" stroke="#FFFFFF" stroke-width="0.6" opacity="0.65"/>
+<circle cx="456.9" cy="168.6" r="3.9" fill="#2563EB" stroke="#FFFFFF" stroke-width="0.6" opacity="0.65"/>
+<circle cx="324.1" cy="199.5" r="2.5" fill="#2563EB" stroke="#FFFFFF" stroke-width="0.6" opacity="0.65"/>
+<circle cx="96.4" cy="163.8" r="6.6" fill="#2563EB" stroke="#FFFFFF" stroke-width="0.6" opacity="0.65"/>
+<circle cx="378.2" cy="192.5" r="3.5" fill="#2563EB" stroke="#FFFFFF" stroke-width="0.6" opacity="0.65"/>
+<circle cx="354.5" cy="169.0" r="2.3" fill="#2563EB" stroke="#FFFFFF" stroke-width="0.6" opacity="0.65"/>
+<circle cx="486.9" cy="164.9" r="3.4" fill="#2563EB" stroke="#FFFFFF" stroke-width="0.6" opacity="0.65"/>
+<circle cx="299.3" cy="153.8" r="3.0" fill="#2563EB" stroke="#FFFFFF" stroke-width="0.6" opacity="0.65"/>
+<circle cx="130.3" cy="187.0" r="3.5" fill="#2563EB" stroke="#FFFFFF" stroke-width="0.6" opacity="0.65"/>
+<circle cx="524.5" cy="232.2" r="2.9" fill="#2563EB" stroke="#FFFFFF" stroke-width="0.6" opacity="0.65"/>
+<circle cx="307.4" cy="157.2" r="2.8" fill="#2563EB" stroke="#FFFFFF" stroke-width="0.6" opacity="0.65"/>
+<circle cx="244.7" cy="148.6" r="6.1" fill="#2563EB" stroke="#FFFFFF" stroke-width="0.6" opacity="0.65"/>
+<circle cx="312.7" cy="198.9" r="2.9" fill="#2563EB" stroke="#FFFFFF" stroke-width="0.6" opacity="0.65"/>
+<circle cx="172.6" cy="153.9" r="2.7" fill="#2563EB" stroke="#FFFFFF" stroke-width="0.6" opacity="0.65"/>
+<circle cx="486.8" cy="191.8" r="6.6" fill="#2563EB" stroke="#FFFFFF" stroke-width="0.6" opacity="0.65"/>
+<circle cx="159.4" cy="183.7" r="3.4" fill="#2563EB" stroke="#FFFFFF" stroke-width="0.6" opacity="0.65"/>
+<circle cx="268.9" cy="226.4" r="2.6" fill="#2563EB" stroke="#FFFFFF" stroke-width="0.6" opacity="0.65"/>
+<circle cx="123.8" cy="232.2" r="2.4" fill="#2563EB" stroke="#FFFFFF" stroke-width="0.6" opacity="0.65"/>
+<circle cx="591.0" cy="185.8" r="3.8" fill="#2563EB" stroke="#FFFFFF" stroke-width="0.6" opacity="0.65"/>
+<circle cx="375.9" cy="172.0" r="4.1" fill="#2563EB" stroke="#FFFFFF" stroke-width="0.6" opacity="0.65"/>
+<circle cx="446.6" cy="180.9" r="2.9" fill="#2563EB" stroke="#FFFFFF" stroke-width="0.6" opacity="0.65"/>
+<circle cx="480.6" cy="191.3" r="4.1" fill="#2563EB" stroke="#FFFFFF" stroke-width="0.6" opacity="0.65"/>
+<circle cx="350.8" cy="186.3" r="6.6" fill="#2563EB" stroke="#FFFFFF" stroke-width="0.6" opacity="0.65"/>
+<circle cx="414.4" cy="175.6" r="3.3" fill="#2563EB" stroke="#FFFFFF" stroke-width="0.6" opacity="0.65"/>
+<circle cx="550.9" cy="192.4" r="2.3" fill="#2563EB" stroke="#FFFFFF" stroke-width="0.6" opacity="0.65"/>
+<circle cx="329.6" cy="156.3" r="3.4" fill="#2563EB" stroke="#FFFFFF" stroke-width="0.6" opacity="0.65"/>
+<circle cx="281.4" cy="151.2" r="2.7" fill="#2563EB" stroke="#FFFFFF" stroke-width="0.6" opacity="0.65"/>
+<circle cx="336.1" cy="149.0" r="2.6" fill="#2563EB" stroke="#FFFFFF" stroke-width="0.6" opacity="0.65"/>
+<circle cx="433.9" cy="178.2" r="5.7" fill="#2563EB" stroke="#FFFFFF" stroke-width="0.6" opacity="0.65"/>
+<circle cx="209.2" cy="154.2" r="4.7" fill="#2563EB" stroke="#FFFFFF" stroke-width="0.6" opacity="0.65"/>
+<circle cx="325.3" cy="177.6" r="3.3" fill="#2563EB" stroke="#FFFFFF" stroke-width="0.6" opacity="0.65"/>
+<circle cx="394.4" cy="173.6" r="6.6" fill="#2563EB" stroke="#FFFFFF" stroke-width="0.6" opacity="0.65"/>
+<circle cx="405.2" cy="182.7" r="3.3" fill="#2563EB" stroke="#FFFFFF" stroke-width="0.6" opacity="0.65"/>
+<circle cx="473.3" cy="178.6" r="3.1" fill="#2563EB" stroke="#FFFFFF" stroke-width="0.6" opacity="0.65"/>
+<circle cx="166.3" cy="138.2" r="2.6" fill="#2563EB" stroke="#FFFFFF" stroke-width="0.6" opacity="0.65"/>
+<circle cx="337.1" cy="161.5" r="3.4" fill="#2563EB" stroke="#FFFFFF" stroke-width="0.6" opacity="0.65"/>
+<circle cx="361.0" cy="193.4" r="3.4" fill="#2563EB" stroke="#FFFFFF" stroke-width="0.6" opacity="0.65"/>
+<circle cx="360.8" cy="152.9" r="2.5" fill="#2563EB" stroke="#FFFFFF" stroke-width="0.6" opacity="0.65"/>
+<circle cx="281.0" cy="160.8" r="2.4" fill="#2563EB" stroke="#FFFFFF" stroke-width="0.6" opacity="0.65"/>
+<circle cx="586.4" cy="210.7" r="2.6" fill="#2563EB" stroke="#FFFFFF" stroke-width="0.6" opacity="0.65"/>
+<circle cx="363.0" cy="174.8" r="3.2" fill="#2563EB" stroke="#FFFFFF" stroke-width="0.6" opacity="0.65"/>
+<circle cx="357.0" cy="178.8" r="3.2" fill="#2563EB" stroke="#FFFFFF" stroke-width="0.6" opacity="0.65"/>
+<circle cx="489.8" cy="181.5" r="2.7" fill="#2563EB" stroke="#FFFFFF" stroke-width="0.6" opacity="0.65"/>
+<circle cx="470.5" cy="201.0" r="3.8" fill="#2563EB" stroke="#FFFFFF" stroke-width="0.6" opacity="0.65"/>
+<circle cx="385.4" cy="197.4" r="3.2" fill="#2563EB" stroke="#FFFFFF" stroke-width="0.6" opacity="0.65"/>
+<circle cx="556.6" cy="194.4" r="6.6" fill="#2563EB" stroke="#FFFFFF" stroke-width="0.6" opacity="0.65"/>
+<circle cx="192.5" cy="167.6" r="2.9" fill="#2563EB" stroke="#FFFFFF" stroke-width="0.6" opacity="0.65"/>
+<circle cx="496.6" cy="174.6" r="2.8" fill="#2563EB" stroke="#FFFFFF" stroke-width="0.6" opacity="0.65"/>
+<circle cx="228.6" cy="157.1" r="2.5" fill="#2563EB" stroke="#FFFFFF" stroke-width="0.6" opacity="0.65"/>
+<circle cx="394.4" cy="163.7" r="2.4" fill="#2563EB" stroke="#FFFFFF" stroke-width="0.6" opacity="0.65"/>
+<circle cx="583.3" cy="168.4" r="2.7" fill="#2563EB" stroke="#FFFFFF" stroke-width="0.6" opacity="0.65"/>
+<circle cx="338.5" cy="188.8" r="4.1" fill="#2563EB" stroke="#FFFFFF" stroke-width="0.6" opacity="0.65"/>
+<circle cx="311.0" cy="163.6" r="4.3" fill="#2563EB" stroke="#FFFFFF" stroke-width="0.6" opacity="0.65"/>
+<circle cx="401.8" cy="189.0" r="2.6" fill="#2563EB" stroke="#FFFFFF" stroke-width="0.6" opacity="0.65"/>
+<circle cx="567.7" cy="217.1" r="2.4" fill="#2563EB" stroke="#FFFFFF" stroke-width="0.6" opacity="0.65"/>
+<circle cx="523.5" cy="154.0" r="2.5" fill="#2563EB" stroke="#FFFFFF" stroke-width="0.6" opacity="0.65"/>
+<circle cx="480.2" cy="126.7" r="2.8" fill="#2563EB" stroke="#FFFFFF" stroke-width="0.6" opacity="0.65"/>
+<circle cx="301.8" cy="139.1" r="2.5" fill="#2563EB" stroke="#FFFFFF" stroke-width="0.6" opacity="0.65"/>
+<circle cx="220.1" cy="140.4" r="2.7" fill="#2563EB" stroke="#FFFFFF" stroke-width="0.6" opacity="0.65"/>
+<circle cx="313.3" cy="181.1" r="6.6" fill="#2563EB" stroke="#FFFFFF" stroke-width="0.6" opacity="0.65"/>
+<circle cx="326.1" cy="181.6" r="4.6" fill="#2563EB" stroke="#FFFFFF" stroke-width="0.6" opacity="0.65"/>
+<circle cx="330.8" cy="148.3" r="3.5" fill="#2563EB" stroke="#FFFFFF" stroke-width="0.6" opacity="0.65"/>
+<circle cx="350.8" cy="150.1" r="2.4" fill="#2563EB" stroke="#FFFFFF" stroke-width="0.6" opacity="0.65"/>
+<circle cx="104.8" cy="155.5" r="2.6" fill="#2563EB" stroke="#FFFFFF" stroke-width="0.6" opacity="0.65"/>
+<circle cx="217.6" cy="172.3" r="3.4" fill="#2563EB" stroke="#FFFFFF" stroke-width="0.6" opacity="0.65"/>
+<circle cx="374.4" cy="197.1" r="5.5" fill="#2563EB" stroke="#FFFFFF" stroke-width="0.6" opacity="0.65"/>
+<path d="M94.2 161.5 L605.8 188.5" fill="none" stroke="#DC2626" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round"/>
+<text x="110.5" y="148.1" font-family="system-ui,-apple-system,Segoe UI,Roboto,Microsoft YaHei,sans-serif" font-size="12" font-weight="600" fill="#8B1F1F" text-anchor="start">加权回归斜率 = 当日 Size 因子收益 f(t)</text>
+<path d="M508.6 183.3 L508.6 140.0" fill="none" stroke="#16A34A" stroke-width="1.6" marker-end="url(#ar)" stroke-linejoin="round" stroke-linecap="round"/>
+<text x="496.6" y="161.7" font-family="system-ui,-apple-system,Segoe UI,Roboto,Microsoft YaHei,sans-serif" font-size="11" font-weight="400" fill="#2F5B2B" text-anchor="end">u(i,t)：个股特异性收益</text>
+<circle cx="508.6" cy="140.0" r="4.2" fill="#16A34A" stroke="#FFFFFF" stroke-width="1.0"/>
+<text x="350.0" y="332.0" font-family="system-ui,-apple-system,Segoe UI,Roboto,Microsoft YaHei,sans-serif" font-size="12" font-weight="400" fill="#6B7280" text-anchor="middle">标准化后的 Size 暴露 X(i,Size)</text>
+<text x="76.0" y="48.0" font-family="system-ui,-apple-system,Segoe UI,Roboto,Microsoft YaHei,sans-serif" font-size="11" font-weight="400" fill="#6B7280" text-anchor="start">当天收益</text>
+<circle cx="528.0" cy="78.0" r="6.0" fill="#2563EB" stroke="#FFFFFF" stroke-width="0.6" opacity="0.70"/>
+<text x="540.0" y="82.0" font-family="system-ui,-apple-system,Segoe UI,Roboto,Microsoft YaHei,sans-serif" font-size="11" font-weight="400" fill="#6B7280" text-anchor="start">点面积 ∝ 市值（回归权重）</text>
+<rect x="30.0" y="340.0" width="620.0" height="46.0" rx="10.0" fill="#F3F4F6" stroke="#E5E7EB" stroke-width="0.5"/>
+<text x="48.0" y="362.0" font-family="system-ui,-apple-system,Segoe UI,Roboto,Microsoft YaHei,sans-serif" font-size="12" font-weight="400" fill="#1F2937" text-anchor="start">每个交易日执行一次，产出当日的 f(t)（K 维）与 u(i,t)（N 维）。</text>
+<text x="48.0" y="382.0" font-family="system-ui,-apple-system,Segoe UI,Roboto,Microsoft YaHei,sans-serif" font-size="12" font-weight="400" fill="#1F2937" text-anchor="start">累积 T 个交易日即得到因子收益序列 {f_t} 与残差序列 {u_t}，构成阶段 B 的输入。</text>
+</svg>
