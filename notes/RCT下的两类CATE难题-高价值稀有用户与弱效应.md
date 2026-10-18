@@ -2,6 +2,8 @@
 
 > 整理自“讲解因果机器学习模型”对话，补充识别条件、验证方法与实务边界。本文是方法笔记，数值仅用于说明，不代表业务实验结果。
 >
+> **2026-10 增补**：新增第十一节——文献调研中的六个可落地方法（X-learner、重尾稳健推断、CUPED/CUPAC、FDR 控制的 HTE 发现、anytime-valid 顺序检验、DR-learner），延伸阅读同步扩充。
+>
 > **核心结论：高价值稀有人群往往缺少局部有效样本；弱效应场景往往缺少可辨识的因果信号。两者都要求模型复杂度与有效信息量匹配。**
 
 ## 一、统一理论：把基线、因果效应与噪声分开
@@ -609,11 +611,95 @@ n_{\mathrm{eff}}
 
 > **最终结论｜增加有效信息、减少无效自由度、分离选择与评价，并围绕目标总体的决策价值验证。模型的任务是提取数据支持的异质性，而不是把所有随机差异解释成异质性。**
 
-## 十、延伸阅读
+## 十一、文献调研补充：六个可落地的方法
+
+> 本节补足正文六处“指出了问题、但未给出正式解法或工具”的空缺。每小节先注明对应正文位置；收录标准是具备严格理论或工业级实现。
+
+### 11.1 X-learner：两臂样本悬殊时的效应学习器（对应 §4.1 局部样本）
+
+正文核心困难是“局部两臂样本都少”，现实更常见的形态是两臂悬殊。Künzel、Sekhon、Bickel 与 Yu（PNAS 2019）把 CATE 估计器整理为 meta-learner 框架：S-learner（单模型含处理指示）、T-learner（两臂各建模型）、X-learner。X-learner 三步：
+
+1. 分臂估计 $`\widehat\mu_0,\widehat\mu_1`$；
+2. 用互补伪结果回归两个效应模型：对照组 $`\widehat\Delta_0=Y_0-\widehat\mu_1(X_0)`$，处理组 $`\widehat\Delta_1=\widehat\mu_1(X_1)-Y_1`$，得 $`\widehat\tau_0,\widehat\tau_1`$；
+3. 按倾向得分合成 $`\widehat\tau(x)=g(x)\widehat\tau_0(x)+\{1-g(x)\}\widehat\tau_1(x)`$。
+
+理论卖点：**一臂样本远多于另一臂时可证有效**——多臂信息经填补路径传给少臂；若 CATE 结构简单（如线性而响应函数 Lipschitz），正则条件下仍达参数速率。直觉：CATE 通常比两臂响应函数更平滑，先让充足样本扛响应函数、再利用简单性估差异。边界：合成权重依赖倾向得分估计；文献模拟中无 meta-learner 一致最优；应作为复杂度阶梯中“结构化 CATE”层级的候选，由独立验证裁决。
+
+### 11.2 重尾的正式处理：从截尾规范到无穷方差推断（对应 §4.2 尾部诊断）
+
+正文指出了失效条件（“二阶矩不存在时常规标准误与 bootstrap 失效”），但未给解法。分两层补齐。
+
+实务层——winsorization 规范（大规模实验平台的标准做法）：分位数用**合并样本**计算（分臂各算会引入不公平截断）；阈值**预先注册**进指标定义（事后挑阈值是研究者自由度，直接虚增假阳性）；诚实报告 estimand 的变化——截尾效应是“截尾均值之差”，合法但不同，须同时报告原始目标与多档阈值（1/99、2/98、5/95）敏感性表。
+
+理论层——稳健估计：**中位数均值**（分桶取均值、桶间取中位数）与 **Catoni 型估计**在只知方差上界时给出有效置信区间，单个极端值只能毁掉一个桶；**Catoni 型置信序列**（Wang & Ramdas 2023）把该性质推广到任意停时有效，且对无穷方差（仅 $`p`$ 阶矩存在，$`1<p\le2`$）亦有构造（Bhatt et al. 2022），收敛速率由 $`1/\sqrt t`$ 退为 $`O((\log\log t/t)^{(p-1)/p})`$。
+
+> **框线结论｜截尾管“可容忍的尾部”，稳健估计管“无法截断的尾部”，复杂效应模型管不了任何一个。**
+
+### 11.3 CUPED / CUPAC：强 m(X) 的工程化形态（对应 §5.2 与 §4.2）
+
+CUPED（Deng et al., WSDM 2013，Bing）构造调整结果：
+
+```math
+Y^{\mathrm{cuped}}=Y-\theta\,(X-\bar X),
+\qquad
+\theta=\frac{\mathrm{Cov}(Y,X)}{\mathrm{Var}(X)},
+\qquad
+\mathrm{Var}(Y^{\mathrm{cuped}})=\mathrm{Var}(Y)(1-\rho^2)
+```
+
+$`X`$ 为处理前同指标或强相关指标，$`\rho`$ 为其与结果的相关。Bing 实测约 50% 缩减——等价于用户数或时长减半；DiD 是 $`\theta\equiv1`$ 特例，最优 $`\theta`$ 永不劣于 DiD。CUPAC 用处理前特征训练的预测替代单一协变量，即正文“强 m(X)”的直接工程对应。
+
+对弱效应：0.03 天量级的效应配上减半方差，功效等价样本翻倍，是不动实验设计能拿到的最大杠杆之一。对高价值：CUPED 只移除**可预测**的价值波动，whale 的不可预测部分按 $`(1-\rho^2)`$ 原样留在残差中——定量印证正文“基线建模不能移除不可预测的巨额波动”。适用条件：协变量必须在随机化之前测量；$`\theta`$ 用合并样本估计；协变量以总体均值中心化；新用户需单独处理；收益完全由 $`\rho^2`$ 决定，弱相关时（$`\rho=0.3`$ 仅 9%）不值得加系统复杂度。可与截尾、trigger 分析叠加，各除一种噪声。
+
+### 11.4 FDR 控制的 HTE 发现：把“搜索校正”变成机器（对应 §5.1 与 §5.5）
+
+正文给出了搜索假阳性的形态与原则，这里补可执行工具。利用变换结果 $`Z_i=Y_i(T_i-p)/\{p(1-p)\}`$（条件期望恰为 $`\tau(X_i)`$），把子群发现转为多重检验：
+
+- **HTE-BH**：对预定义子群跑 Benjamini–Hochberg，控制 FDR 于 $`q`$（在线实验案例 $`q=0.2`$）；
+- **HTE-Knockoff**：model-X knockoff 过滤，**有限样本**控制 FDR，信号微弱时比 BH 更保守（主动少报以省调查成本）。
+
+在线实验实证（Pang et al.）：朴素方法 FDR 失控、Bonferroni 功效大减；受控搜索在真实数据中发现了事后可解释的异质性（新排版利好非英语内容）。更进一步，子群选择性 knockoff 过滤（Gablenz et al., JASA）允许**数据驱动地**提出局部条件假设（“$`X_j`$ 仅在子群 $`g`$ 内有效应”），同一份数据既学习假设又检验，无需样本切分且 FDR 受控——把正文“搜索自由度计入预算”落实为“搜索的代价可显式计价并控制”。边界：BH 在统计量相关、设计非正交时可失守；knockoff 依赖协变量分布知识（model-X 假设）；$`q=0.2`$ 意味着清单平均两成是噪声。
+
+### 11.5 anytime-valid 顺序检验：偷看的明码标价（对应 §5.1 搜索预算）
+
+弱效应实验跑得久，天然诱发偷看。固定样本检验在中途反复查看并在 $`p<0.05`$ 时停止，两周日查的假阳率可升至约 **26%**（Johari et al. 模拟口径）。mSPRT 对效应取先验混合构造似然比 $`\Lambda_t`$，报告 $`p_t=\min(1,1/\Lambda_t)`$；零假设下 $`\Lambda_t`$ 是鞅，故 $`P(\exists t: p_t\le\alpha\mid H_0)\le\alpha`$——**任意停时有效**。Wish 的平台已落地（always-valid p-value），Optimizely、Statsig 同类实现。代价：同功效约需 20%–40% 更大最大样本；固定次数中期查看可用 alpha spending（O'Brien–Fleming 约 +2%–4%，Pocock 约 +15%–18%）更省但日程死板。高价值场景中期估计被尾部大单剧烈摆动时，应与 11.2 的稳健估计配合，避免单个 whale 制造中途假显著。
+
+### 11.6 DR-learner：让学习与评估同源（对应 §3.3 与 §7.2）
+
+正文 §7.2 用 DR 得分评估策略、R-Learner 学习效应；Kennedy（2023）指出同一个 DR 伪结果可直接回归出 CATE：
+
+```math
+\widehat\phi_i=
+\widehat\mu_1(X_i)-\widehat\mu_0(X_i)
++\frac{T_i}{\widehat e(X_i)}\{Y_i-\widehat\mu_1(X_i)\}
+-\frac{1-T_i}{1-\widehat e(X_i)}\{Y_i-\widehat\mu_0(X_i)\},
+\qquad
+\widehat\tau_{\mathrm{DR}}(x)=\mathbb E_n[\widehat\phi_i\mid X_i=x]
+```
+
+$`E[\widehat\phi_i\mid X=x]=\tau(x)`$。理论优势在二阶余项：第一阶段误差以乘积形式进入，对 nuisance 收敛速率的要求**低于** R-Learner 类方法（后者常需 $`n^{-1/4}`$）；CATE 较平滑时 oracle 效率条件进一步放宽。实践意义：学习与评估用同一正交化物件，避免“学习一套分数、评估另一套分数”的隐蔽错配。边界：倾向得分接近 0/1 时伪结果方差爆炸，需裁剪或稳定化权重；两臂悬殊场景应与 X-learner 在独立验证中赛马。
+
+### 11.7 一张根基注脚：partial pooling 的经典出身
+
+§4.3 的收缩权重 $`w_g=a^2/(a^2+s_g^2)`$ 是 James–Stein 收缩与经验贝叶斯的直接后裔（Efron & Morris 1975：15 名棒球手半季数据向均值收缩后，对下半季预测全面优于原始估计）。Stein 悖论：三个及以上参数联合收缩可在均方误差上严格优于各自单独估计。partial pooling 因此不是可选技巧，而是高维估计的默认最优形态——稀有子群越少越嘈杂，收缩收益越大。
+
+> **本节小结｜X-learner 与 CUPED 补分子（把信息传给少臂、把可预测波动移走）；截尾与稳健估计压分母（把尾部从不可推断变成可推断）；FDR 过滤与 mSPRT 管过程（把特征搜索与时间偷看都明码计价）；DR-learner 保证学习与评估同源。**
+
+---
+
+## 十二、延伸阅读
 
 - [Quasi-Oracle Estimation of Heterogeneous Treatment Effects — Nie & Wager](https://arxiv.org/abs/1712.04912)：R-Learner 与 nuisance residualization。
 - [GRF 官方算法说明](https://grf-labs.github.io/grf/REFERENCE.html)：honesty、局部估计、正交化与实现边界。
 - [Policy Learning with Observational Data — Athey & Wager](https://arxiv.org/abs/1702.02896)：正交得分与策略价值。
+- **第十一节增补文献**：
+  - [Metalearners for estimating heterogeneous treatment effects — Künzel, Sekhon, Bickel & Yu](https://arxiv.org/abs/1706.03461)：X-learner，两臂不均衡时可证有效（PNAS 2019）。
+  - [CUPED — Deng, Xu, Kohavi & Walker](https://ai.stanford.edu/~ronnyk/2013-02CUPEDImprovingSensitivityOfControlledExperiments.pdf)：处理前数据的方差缩减（WSDM 2013）。
+  - [Catoni-style confidence sequences — Wang & Ramdas](https://doi.org/10.1016/j.spa.2023.05.007)：重尾与无穷方差下的置信序列。
+  - [FDR Controlled HTE Detection for Online Controlled Experiments — Pang et al.](https://arxiv.org/abs/1808.04904)：HTE-BH 与 HTE-Knockoff。
+  - [Searching for local associations while controlling the FDR — Gablenz et al.](https://arxiv.org/abs/2412.02182)：子群选择性 knockoff 过滤（JASA）。
+  - [Always valid inference: Continuous monitoring of A/B tests — Johari, Pekelis & Walsh](https://arxiv.org/abs/1512.04922)：mSPRT 与 always-valid p-value。
+  - [Towards optimal doubly robust estimation of heterogeneous causal effects — Kennedy](https://arxiv.org/abs/2004.14497)：DR-learner。
 - [本仓库：选择与估计分离](选择与估计分离.md)。
 - [本仓库：互联网新用户 LTV 长尾建模](新用户LTV长尾建模-理论与实务.md)。
 - [本仓库：现代统计思想](现代统计思想-复杂理论背后的统计哲学.md)。
