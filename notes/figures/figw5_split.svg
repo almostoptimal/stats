@@ -1,0 +1,283 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="594.72pt" height="360.432pt" viewBox="0 0 594.72 360.432" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:date>2026-10-18T13:24:51.402205</dc:date>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>Matplotlib v3.9.2, https://matplotlib.org/</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 360.432 
+L 594.72 360.432 
+L 594.72 0 
+L 0 0 
+z
+" style="fill: #ffffff"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 158.0832 123.511571 
+Q 158.0832 139.177622 158.0832 153.390229 
+" clip-path="url(#p0ebbac71c8)" style="fill: none; stroke: #666666; stroke-width: 1.3; stroke-linecap: round"/>
+    <path d="M 160.6832 148.190229 
+L 158.0832 153.390229 
+L 155.4832 148.190229 
+z
+" clip-path="url(#p0ebbac71c8)" style="fill: #666666; stroke: #666666; stroke-width: 1.3; stroke-linecap: round"/>
+   </g>
+   <g id="patch_3">
+    <path d="M 158.0832 186.380531 
+Q 158.0832 202.046582 158.0832 216.259189 
+" clip-path="url(#p0ebbac71c8)" style="fill: none; stroke: #666666; stroke-width: 1.3; stroke-linecap: round"/>
+    <path d="M 160.6832 211.059189 
+L 158.0832 216.259189 
+L 155.4832 211.059189 
+z
+" clip-path="url(#p0ebbac71c8)" style="fill: #666666; stroke: #666666; stroke-width: 1.3; stroke-linecap: round"/>
+   </g>
+   <g id="patch_4">
+    <path d="M 158.0832 249.253255 
+Q 158.0832 266.26313 158.0832 281.819559 
+" clip-path="url(#p0ebbac71c8)" style="fill: none; stroke: #666666; stroke-width: 1.3; stroke-linecap: round"/>
+    <path d="M 160.6832 276.619559 
+L 158.0832 281.819559 
+L 155.4832 276.619559 
+z
+" clip-path="url(#p0ebbac71c8)" style="fill: #666666; stroke: #666666; stroke-width: 1.3; stroke-linecap: round"/>
+   </g>
+   <g id="patch_5">
+    <path d="M 400.412846 122.940191 
+Q 384.408216 139.177941 369.423868 154.380547 
+" clip-path="url(#p0ebbac71c8)" style="fill: none; stroke: #666666; stroke-width: 1.3; stroke-linecap: round"/>
+    <path d="M 374.925864 152.502241 
+L 369.423868 154.380547 
+L 371.222421 148.851966 
+z
+" clip-path="url(#p0ebbac71c8)" style="fill: #666666; stroke: #666666; stroke-width: 1.3; stroke-linecap: round"/>
+   </g>
+   <g id="patch_6">
+    <path d="M 472.860754 122.940191 
+Q 488.865384 139.177941 503.849732 154.380547 
+" clip-path="url(#p0ebbac71c8)" style="fill: none; stroke: #666666; stroke-width: 1.3; stroke-linecap: round"/>
+    <path d="M 502.051179 148.851966 
+L 503.849732 154.380547 
+L 498.347736 152.502241 
+z
+" clip-path="url(#p0ebbac71c8)" style="fill: #666666; stroke: #666666; stroke-width: 1.3; stroke-linecap: round"/>
+   </g>
+   <g id="patch_7">
+    <path d="M 357.102782 185.425357 
+Q 384.409154 202.047822 410.47402 217.914535 
+" clip-path="url(#p0ebbac71c8)" style="fill: none; stroke: #666666; stroke-width: 1.3; stroke-linecap: round"/>
+    <path d="M 407.384207 212.989796 
+L 410.47402 217.914535 
+L 404.680341 217.431542 
+z
+" clip-path="url(#p0ebbac71c8)" style="fill: #666666; stroke: #666666; stroke-width: 1.3; stroke-linecap: round"/>
+   </g>
+   <g id="patch_8">
+    <path d="M 516.170818 185.425357 
+Q 488.864446 202.047822 462.79958 217.914535 
+" clip-path="url(#p0ebbac71c8)" style="fill: none; stroke: #666666; stroke-width: 1.3; stroke-linecap: round"/>
+    <path d="M 468.593259 217.431542 
+L 462.79958 217.914535 
+L 465.889393 212.989796 
+z
+" clip-path="url(#p0ebbac71c8)" style="fill: #666666; stroke: #666666; stroke-width: 1.3; stroke-linecap: round"/>
+   </g>
+   <g id="patch_9">
+    <path d="M 436.6368 249.253255 
+Q 436.6368 266.26313 436.6368 281.819559 
+" clip-path="url(#p0ebbac71c8)" style="fill: none; stroke: #666666; stroke-width: 1.3; stroke-linecap: round"/>
+    <path d="M 439.2368 276.619559 
+L 436.6368 281.819559 
+L 434.0368 276.619559 
+z
+" clip-path="url(#p0ebbac71c8)" style="fill: #666666; stroke: #666666; stroke-width: 1.3; stroke-linecap: round"/>
+   </g>
+   <g id="text_1">
+    <text style="fill: #b33a3a; font: 700 10.6px 'Microsoft YaHei', 'SimHei', 'DejaVu Sans', sans-serif; text-anchor: middle" x="158.0832" y="65.83104" transform="rotate(-0 158.0832 65.83104)">做法一：同一批数据选，也用它评</text>
+   </g>
+   <g id="patch_10">
+    <path d="M 65.232 123.011856 
+L 250.9344 123.011856 
+Q 260.21952 123.011856 260.21952 118.22184 
+L 260.21952 97.26552 
+Q 260.21952 92.475504 250.9344 92.475504 
+L 65.232 92.475504 
+Q 55.94688 92.475504 55.94688 97.26552 
+L 55.94688 118.22184 
+Q 55.94688 123.011856 65.232 123.011856 
+z
+" clip-path="url(#p0ebbac71c8)" style="fill: #eef3f8; stroke: #2e5c8a; stroke-width: 1.4; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_11">
+    <path d="M 65.232 185.880816 
+L 250.9344 185.880816 
+Q 260.21952 185.880816 260.21952 181.0908 
+L 260.21952 160.13448 
+Q 260.21952 155.344464 250.9344 155.344464 
+L 65.232 155.344464 
+Q 55.94688 155.344464 55.94688 160.13448 
+L 55.94688 181.0908 
+Q 55.94688 185.880816 65.232 185.880816 
+z
+" clip-path="url(#p0ebbac71c8)" style="fill: #eef3f8; stroke: #2e5c8a; stroke-width: 1.4; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_12">
+    <path d="M 65.232 248.749776 
+L 250.9344 248.749776 
+Q 260.21952 248.749776 260.21952 243.95976 
+L 260.21952 223.00344 
+Q 260.21952 218.213424 250.9344 218.213424 
+L 65.232 218.213424 
+Q 55.94688 218.213424 55.94688 223.00344 
+L 55.94688 243.95976 
+Q 55.94688 248.749776 65.232 248.749776 
+z
+" clip-path="url(#p0ebbac71c8)" style="fill: #fdecec; stroke: #b33a3a; stroke-width: 1.4; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_13">
+    <path d="M 65.232 320.600016 
+L 250.9344 320.600016 
+Q 260.21952 320.600016 260.21952 315.81 
+L 260.21952 288.86616 
+Q 260.21952 284.076144 250.9344 284.076144 
+L 65.232 284.076144 
+Q 55.94688 284.076144 55.94688 288.86616 
+L 55.94688 315.81 
+Q 55.94688 320.600016 65.232 320.600016 
+z
+" clip-path="url(#p0ebbac71c8)" style="fill: #fdecec; stroke: #b33a3a; stroke-width: 1.4; stroke-linejoin: miter"/>
+   </g>
+   <g id="text_2">
+    <text style="fill: #b33a3a; font: 12px 'Microsoft YaHei', 'SimHei', 'DejaVu Sans', sans-serif; text-anchor: middle" x="279.9504" y="236.786287" transform="rotate(-0 279.9504 236.786287)">偏</text>
+   </g>
+   <g id="text_3">
+    <text style="fill: #4e8c72; font: 700 10.6px 'Microsoft YaHei', 'SimHei', 'DejaVu Sans', sans-serif; text-anchor: middle" x="436.6368" y="65.83104" transform="rotate(-0 436.6368 65.83104)">做法二：一半选，另一半评</text>
+   </g>
+   <g id="patch_14">
+    <path d="M 343.7856 123.011856 
+L 529.488 123.011856 
+Q 538.77312 123.011856 538.77312 118.22184 
+L 538.77312 97.26552 
+Q 538.77312 92.475504 529.488 92.475504 
+L 343.7856 92.475504 
+Q 334.50048 92.475504 334.50048 97.26552 
+L 334.50048 118.22184 
+Q 334.50048 123.011856 343.7856 123.011856 
+z
+" clip-path="url(#p0ebbac71c8)" style="fill: #eef3f8; stroke: #2e5c8a; stroke-width: 1.4; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_15">
+    <path d="M 297.36 185.880816 
+L 413.424 185.880816 
+Q 422.70912 185.880816 422.70912 181.0908 
+L 422.70912 160.13448 
+Q 422.70912 155.344464 413.424 155.344464 
+L 297.36 155.344464 
+Q 288.07488 155.344464 288.07488 160.13448 
+L 288.07488 181.0908 
+Q 288.07488 185.880816 297.36 185.880816 
+z
+" clip-path="url(#p0ebbac71c8)" style="fill: #eef7f2; stroke: #4e8c72; stroke-width: 1.4; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_16">
+    <path d="M 459.8496 185.880816 
+L 575.9136 185.880816 
+Q 585.19872 185.880816 585.19872 181.0908 
+L 585.19872 160.13448 
+Q 585.19872 155.344464 575.9136 155.344464 
+L 459.8496 155.344464 
+Q 450.56448 155.344464 450.56448 160.13448 
+L 450.56448 181.0908 
+Q 450.56448 185.880816 459.8496 185.880816 
+z
+" clip-path="url(#p0ebbac71c8)" style="fill: #eef7f2; stroke: #4e8c72; stroke-width: 1.4; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_17">
+    <path d="M 343.7856 248.749776 
+L 529.488 248.749776 
+Q 538.77312 248.749776 538.77312 243.95976 
+L 538.77312 223.00344 
+Q 538.77312 218.213424 529.488 218.213424 
+L 343.7856 218.213424 
+Q 334.50048 218.213424 334.50048 223.00344 
+L 334.50048 243.95976 
+Q 334.50048 248.749776 343.7856 248.749776 
+z
+" clip-path="url(#p0ebbac71c8)" style="fill: #eef7f2; stroke: #4e8c72; stroke-width: 1.4; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_18">
+    <path d="M 343.7856 320.600016 
+L 529.488 320.600016 
+Q 538.77312 320.600016 538.77312 315.81 
+L 538.77312 288.86616 
+Q 538.77312 284.076144 529.488 284.076144 
+L 343.7856 284.076144 
+Q 334.50048 284.076144 334.50048 288.86616 
+L 334.50048 315.81 
+Q 334.50048 320.600016 343.7856 320.600016 
+z
+" clip-path="url(#p0ebbac71c8)" style="fill: #eef7f2; stroke: #4e8c72; stroke-width: 1.4; stroke-linejoin: miter"/>
+   </g>
+   <g id="text_4">
+    <text style="fill: #4e8c72; font: 12px 'Microsoft YaHei', 'SimHei', 'DejaVu Sans', sans-serif; text-anchor: middle" x="567.78912" y="236.786287" transform="rotate(-0 567.78912 236.786287)">准</text>
+   </g>
+   <g id="text_5">
+    <text style="fill: #444444; font: italic 9.6px 'Microsoft YaHei', 'SimHei', 'DejaVu Sans', sans-serif; text-anchor: middle" x="297.36" y="341.25696" transform="rotate(-0 297.36 341.25696)">同一句话：让「挑」和「量」用的不是同一份噪声</text>
+   </g>
+   <g id="text_6">
+    <text style="fill: #222222; font: 9.4px 'Microsoft YaHei', 'SimHei', 'DejaVu Sans', sans-serif; text-anchor: middle" x="158.0832" y="110.332352" transform="rotate(-0 158.0832 110.332352)">一批数据 D</text>
+   </g>
+   <g id="text_7">
+    <text style="fill: #222222; font: 9.4px 'Microsoft YaHei', 'SimHei', 'DejaVu Sans', sans-serif; text-anchor: middle" x="158.0832" y="173.201312" transform="rotate(-0 158.0832 173.201312)">在 D 里选出最好的那个</text>
+   </g>
+   <g id="text_8">
+    <text style="fill: #222222; font: 9.4px 'Microsoft YaHei', 'SimHei', 'DejaVu Sans', sans-serif; text-anchor: middle" x="158.0832" y="236.070272" transform="rotate(-0 158.0832 236.070272)">用 D 报告它有多好</text>
+   </g>
+   <g id="text_9">
+    <text style="fill: #222222; font: 9.2px 'Microsoft YaHei', 'SimHei', 'DejaVu Sans', sans-serif" transform="translate(135.0832 299.315592)">报告值偏高</text>
+    <text style="fill: #222222; font: 9.2px 'Microsoft YaHei', 'SimHei', 'DejaVu Sans', sans-serif" transform="translate(102.617981 310.427755)">（D 里的噪声被用了两次）</text>
+   </g>
+   <g id="text_10">
+    <text style="fill: #222222; font: 9.4px 'Microsoft YaHei', 'SimHei', 'DejaVu Sans', sans-serif; text-anchor: middle" x="436.6368" y="110.332352" transform="rotate(-0 436.6368 110.332352)">数据 D 拆成 D1 和 D2</text>
+   </g>
+   <g id="text_11">
+    <text style="fill: #222222; font: 9px 'Microsoft YaHei', 'SimHei', 'DejaVu Sans', sans-serif; text-anchor: middle" x="355.392" y="173.091156" transform="rotate(-0 355.392 173.091156)">D1：选出最好的</text>
+   </g>
+   <g id="text_12">
+    <text style="fill: #222222; font: 9px 'Microsoft YaHei', 'SimHei', 'DejaVu Sans', sans-serif; text-anchor: middle" x="517.8816" y="173.091156" transform="rotate(-0 517.8816 173.091156)">D2：报告它多好</text>
+   </g>
+   <g id="text_13">
+    <text style="fill: #222222; font: 9.2px 'Microsoft YaHei', 'SimHei', 'DejaVu Sans', sans-serif; text-anchor: middle" x="436.6368" y="236.015194" transform="rotate(-0 436.6368 236.015194)">两边用的是不同的噪声</text>
+   </g>
+   <g id="text_14">
+    <text style="fill: #222222; font: 9.2px 'Microsoft YaHei', 'SimHei', 'DejaVu Sans', sans-serif" transform="translate(409.0368 299.315592)">报告值是对的</text>
+    <text style="fill: #222222; font: 9.2px 'Microsoft YaHei', 'SimHei', 'DejaVu Sans', sans-serif" transform="translate(381.4368 310.427755)">（代价：各自的数据变少）</text>
+   </g>
+  </g>
+  <g id="text_15">
+   <text style="font: 12.8px 'Microsoft YaHei', 'SimHei', 'DejaVu Sans', sans-serif; text-anchor: middle" x="288" y="17.432" transform="rotate(-0 288 17.432)">图 5　所有的解药都是这一件事：把选择与评价分开</text>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="p0ebbac71c8">
+   <rect x="7.2" y="53.856" width="580.32" height="299.376"/>
+  </clipPath>
+ </defs>
+</svg>
