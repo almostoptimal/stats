@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-《赢家诅咒》统一版配图生成脚本（可重跑）
+《选择与估计分离》配图生成脚本（可重跑）
 
 用法：
     D:/anaconda/python.exe make_winfig.py            # 输出 SVG
@@ -9,8 +9,8 @@
 产出（图号与正文一一对应）：
     figw1_auction.{FMT}       图 1：同一个读数 115，在四种处境下的后验
     figw2_cloud.{FMT}         图 2：只有越过阈值的点被看见
-    figw3_overfit.{FMT}       图 3：过拟合是连续版的赢家诅咒
-    figw4_ruler.{FMT}         图 4：一把尺子 σ√(2log M)，与四个场景
+    figw3_ruler.{FMT}         图 3：一把尺子 σ√(2log M)，与四个场景
+    figw4_overfit.{FMT}       图 4：过拟合是连续版的赢家诅咒
     figw5_split.{FMT}         图 5：把选择与评价分开
     figw6_tails.{FMT}         图 6（补充）：换分布，倍数变，机制不变
 
@@ -212,7 +212,7 @@ def fig_cloud(n_cand=2200, seed=20261018, c=C_GWAS):
 
 
 # ============================================================================
-# 图 3：一把尺子 —— 偏差 σ√(2log M)，与五个场景
+# 图 3：一把尺子 —— 偏差 σ√(2log M)，与四个场景
 # ============================================================================
 def fig_ruler():
     Ms = np.logspace(np.log10(2), 7, 220)
@@ -255,8 +255,8 @@ def fig_ruler():
     ax.set_title("门槛的高度只取决于两件事：噪声有多大、试过多少次", fontsize=11.0)
     ax.legend(fontsize=9.4, loc="lower right", framealpha=0.95)
     ax.grid(alpha=0.15, lw=0.6, which="both")
-    fig.suptitle("图 4　一把尺子：偏差 ≈ σ × √(2log M)", fontsize=12.8, y=1.02)
-    return savefig(fig, "figw4_ruler"), lab_y
+    fig.suptitle("图 3　一把尺子：偏差 ≈ σ × √(2log M)", fontsize=12.8, y=1.02)
+    return savefig(fig, "figw3_ruler"), lab_y
 
 
 # ============================================================================
@@ -314,8 +314,8 @@ def fig_overfit(n=30, sigma=0.50, dmax=10, reps=600, seed=11):
     ax.set_title("训练误差一路降，测试误差 d=5 之后持续回升", fontsize=10.8)
     ax.legend(fontsize=9.4, loc="upper right", framealpha=0.95)
     ax.grid(alpha=0.15, lw=0.6)
-    fig.suptitle("图 3　过拟合：训练误差里有一块是「拟合噪声」", fontsize=12.6, y=1.02)
-    return savefig(fig, "figw3_overfit"), [(int(d), float(a), float(b))
+    fig.suptitle("图 4　过拟合：训练误差里有一块是「拟合噪声」", fontsize=12.6, y=1.02)
+    return savefig(fig, "figw4_overfit"), [(int(d), float(a), float(b))
                                            for d, a, b in zip(degs, mtr, mte)]
 
 
@@ -462,12 +462,12 @@ def main():
     print("图2 被报告者：真值均值 %.2f，报告值均值 %.2f，虚增 %.2f"
           % (mm[0], mm[1], mm[1] - mm[0]))
 
-    p3, tb = fig_overfit()
-    print("图3 训练/测试（d=5,10）：%.3f/%.3f  %.3f/%.3f  乐观量 %.3f"
-          % (tb[4][1], tb[4][2], tb[9][1], tb[9][2], tb[9][2] - tb[9][1]))
+    p3, marks = fig_ruler()
+    print("图3 关键点：" + "  ".join("M=%d→%.2f" % (m, v) for m, v in marks))
 
-    p4, marks = fig_ruler()
-    print("图4 关键点：" + "  ".join("M=%d→%.2f" % (m, v) for m, v in marks))
+    p4, tb = fig_overfit()
+    print("图4 训练/测试（d=5,10）：%.3f/%.3f  %.3f/%.3f  乐观量 %.3f"
+          % (tb[4][1], tb[4][2], tb[9][1], tb[9][2], tb[9][2] - tb[9][1]))
 
     p5 = fig_split()
     p6, rows = fig_tails()

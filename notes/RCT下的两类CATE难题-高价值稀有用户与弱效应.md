@@ -614,7 +614,7 @@ n_{\mathrm{eff}}
 - [Quasi-Oracle Estimation of Heterogeneous Treatment Effects — Nie & Wager](https://arxiv.org/abs/1712.04912)：R-Learner 与 nuisance residualization。
 - [GRF 官方算法说明](https://grf-labs.github.io/grf/REFERENCE.html)：honesty、局部估计、正交化与实现边界。
 - [Policy Learning with Observational Data — Athey & Wager](https://arxiv.org/abs/1702.02896)：正交得分与策略价值。
-- [本仓库：现代统计学习中的“选择—估计分离”](现代统计学习-选择与估计分离.md)。
+- [本仓库：选择与估计分离](选择与估计分离.md)。
 - [本仓库：互联网新用户 LTV 长尾建模](新用户LTV长尾建模-理论与实务.md)。
 - [本仓库：现代统计思想](现代统计思想-复杂理论背后的统计哲学.md)。
 
