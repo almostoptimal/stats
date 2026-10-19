@@ -2,7 +2,9 @@
 
 > 阅读对象：Marcos López de Prado，《Advances in Financial Machine Learning》（2018）第 6—9 章。基于“交易时间与日历时间”对话整理，结合统计推导与实务评议。本文区分书中方法、一般统计原理和扩展建议，不把经验方法写成普遍定理。整理日期：2026-10-07。
 >
-> 前篇：[第 2—5 章：统计哲学、统一逻辑与量化实务](AFML-第2-5章-统计哲学与量化实务.md)。
+> 前篇：[第 2—5 章：统计哲学、统一逻辑与量化实务](AFML-第2-5章-统计哲学与量化实务.md)。**本篇在三部曲中的位置**：2—5 篇造样本，本篇防自欺，10—16 篇管资金。σ√(2logM) 的多重试验推导（§6）以本篇为主讲，10—16 篇的 DSR/CSCV 直接引用此处。
+
+**先用一个真实复盘中反复出现的形态定调**（教学化的综合案例，人物细节虚构，数字量级常见）：某团队用随机 K-fold 交叉验证训练一个 200 特征的分类器做 triple-barrier 标签预测，样本内 AUC 0.71，回测 Sharpe 3.1；按书中的 purged K-fold + embargo 重切后，AUC 掉到 0.53——接近随机，回测 Sharpe 归零。团队第一反应是「重切的方法有问题」，但错的是原来的验证：随机分折把持有期重叠的标签同时放进训练和测试，模型只需记住「同一段行情重复出现」就能在测试折上得高分——**它验证的不是预测能力，是记忆能力**。本篇四章回答的正是：集成（第 6 章）为什么救不了这种错、交叉验证（第 7 章）怎么切才对、特征重要性（第 8 章）怎么读才不被骗、调参（第 9 章）怎么搜才不把运气调成参数。
 
 ## 1. 主线：防止把历史偶然性当作稳定规律
 
@@ -231,6 +233,8 @@ $$
 但“相关变量 MDA 必然偏低”也过强。无条件置换可能制造训练分布中不存在的组合，迫使模型外推，从而夸大重要性。结果取决于模型使用相关性的方式。
 
 补充诊断包括：按经济含义联合置换特征组、训练侧相关聚类、删除后重训、在合理条件分布内置换。分组与条件置换回答不同问题，各有额外假设。
+
+**「MDI 很高、MDA 为零」的对照数字案例**。造一个可以直接复算的最小例子（教学设定）：5000 个样本、50 个候选特征，其中只有 $`X_1`$ 携带信号（$`Y=\mathbf1\{X_1>0\}`$，$`X_1\sim N(0,1)`$），其余 49 个是纯噪声但与 $`X_1`$ 存在 0.5 的相关性。深树在训练侧会发现：在 $`X_1`$ 已经切过的节点里，噪声变量偶尔还能在残余样本上「改善」不纯度（纯靠过拟合的切分），而 $`X_1`$ 本身被反复使用——于是 **MDI 排名：$`X_1`$ 约 40%，若干噪声特征瓜分剩余 60%**；且由于候选切分数 $`O(50n)`$ 中噪声变量占 98%，它们的 MDI 合计比重随特征数增长。同一模型算 **MDA**：在验证折上置换 $`X_1`$，准确率从 0.65 掉到 0.52，重要性一骑绝尘；置换任何噪声变量，评分变化 $`\pm 0.01`$ 以内——因为它们的「贡献」只存在于训练集的记忆里，验证集上看不见。这个案例的读法不是「MDA 好MDI 坏」，而是**两个指标在回答不同问题**：MDI 问「训练时谁被用了」（受过拟合与切分机会污染），MDA 问「预测时谁被需要」（受相关替代与置换设计影响）；两者都高才接近「真实且被使用」，一高一零就是诊断报告而不是排行榜。
 
 SFI 避免同一次多特征拟合中的替代竞争，却看不到纯交互。若独立均衡的二元变量满足：
 
@@ -565,6 +569,9 @@ $$
 - [Permutation feature importance](https://scikit-learn.org/stable/modules/permutation_importance)：现代实现的解释边界。
 - [Nested versus non-nested CV](https://scikit-learn.org/stable/auto_examples/model_selection/plot_nested_cross_validation_iris.html)：区分模型选择与评估。
 - [SciPy loguniform](https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.loguniform.html)：分布及现有接口。
+- Cawley & Talbot (2010), *JMLR* 11, 2079–2107, [On Over-fitting in Model Selection and Subsequent Selection Bias in Performance Evaluation](https://www.jmlr.org/papers/v11/cawley10a.html)：nested CV 不是可选项——外层评估若被反复查看并据此改流程，性能估计的乐观偏差没有上限；本篇 §5「外层结果被反复用于修改研究」的形式化出处。
+- Nadeau & Bengio (2003), *Machine Learning* 52, 239–281：CV 折间相关使标准误被低估，给出校正的折间方差估计——「调参搜了多少组」之外，还要报告「评估本身有多稳」。
+- Harvey, Liu & Zhu (2016), *Review of Financial Studies*, 30(5), …and the Cross-Section of Expected Returns：跨研究层面的同一问题——数百个已发表因子中多重试验把 $`t`$ 门槛推到 3.0；本篇 §6 的 $`\sigma\sqrt{2\log M}`$ 在学术界的对账单。
 - [GitHub 数学表达式](https://docs.github.com/en/get-started/writing-on-github/working-with-advanced-formatting/writing-mathematical-expressions)：采用行内美元符号和独立块级双美元符号，不使用自定义宏、公式编号或复杂环境。
 
 Filtration 的统一叙述、partial pooling 示例、加权概率目标推导、实施优先级与研究治理建议属于本文扩展，不代表书中逐字主张或已验证的交易收益。
