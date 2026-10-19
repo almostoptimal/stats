@@ -2,7 +2,7 @@
 
 > 整理自“讲解因果机器学习模型”对话，补充识别条件、验证方法与实务边界。本文是方法笔记，数值仅用于说明，不代表业务实验结果。
 >
-> **2026-10 增补**：新增第十一节——文献调研中的六个可落地方法（X-learner、重尾稳健推断、CUPED/CUPAC、FDR 控制的 HTE 发现、anytime-valid 顺序检验、DR-learner），延伸阅读同步扩充。
+> **2026-10 增补**：新增第十节——文献调研中的六个可落地方法（X-learner、重尾稳健推断、CUPED/CUPAC、FDR 控制的 HTE 发现、anytime-valid 顺序检验、DR-learner），延伸阅读同步扩充。
 >
 > **核心结论：高价值稀有人群往往缺少局部有效样本；弱效应场景往往缺少可辨识的因果信号。两者都要求模型复杂度与有效信息量匹配。**
 
@@ -611,7 +611,7 @@ n_{\mathrm{eff}}
 
 > **最终结论｜增加有效信息、减少无效自由度、分离选择与评价，并围绕目标总体的决策价值验证。模型的任务是提取数据支持的异质性，而不是把所有随机差异解释成异质性。**
 
-## 十一、文献调研补充：六个可落地的方法
+## 十、文献调研补充：六个可落地的方法
 
 > 本节补足正文六处“指出了问题、但未给出正式解法或工具”的空缺。每小节先注明对应正文位置；收录标准是具备严格理论或工业级实现。
 
@@ -687,12 +687,12 @@ $`E[\widehat\phi_i\mid X=x]=\tau(x)`$。理论优势在二阶余项：第一阶�
 
 ---
 
-## 十二、延伸阅读
+## 十一、延伸阅读
 
 - [Quasi-Oracle Estimation of Heterogeneous Treatment Effects — Nie & Wager](https://arxiv.org/abs/1712.04912)：R-Learner 与 nuisance residualization。
 - [GRF 官方算法说明](https://grf-labs.github.io/grf/REFERENCE.html)：honesty、局部估计、正交化与实现边界。
 - [Policy Learning with Observational Data — Athey & Wager](https://arxiv.org/abs/1702.02896)：正交得分与策略价值。
-- **第十一节增补文献**：
+- **第十节增补文献**：
   - [Metalearners for estimating heterogeneous treatment effects — Künzel, Sekhon, Bickel & Yu](https://arxiv.org/abs/1706.03461)：X-learner，两臂不均衡时可证有效（PNAS 2019）。
   - [CUPED — Deng, Xu, Kohavi & Walker](https://ai.stanford.edu/~ronnyk/2013-02CUPEDImprovingSensitivityOfControlledExperiments.pdf)：处理前数据的方差缩减（WSDM 2013）。
   - [Catoni-style confidence sequences — Wang & Ramdas](https://doi.org/10.1016/j.spa.2023.05.007)：重尾与无穷方差下的置信序列。

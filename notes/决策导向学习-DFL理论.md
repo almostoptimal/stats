@@ -72,6 +72,8 @@ E[C(z,Y)\mid X=x]\ne C(z,E[Y\mid X=x]).
 
 例如库存的缺货和积压成本不对称时，最优订货量通常是条件分位数；尾部风险目标需要更多分布信息。DFL 的第一步是确定**决策需要什么信息**，而不是默认所有未知量都应预测均值。
 
+**报童问题：这条原则最干净的教学案例，也是 DFL 的第一个真实战场。** 报童要决定进货量 $`q`$：需求 $`Y`$ 是随机的，订多了积压、订少了缺货。设单位成本 $`b`$、售价 $`r`$，缺货单价损失即 $`r-b`$，经典结论是最优进货量等于需求的 $`b/r`$ 分位数（critical fractile）——注意是**分位数**，不是均值：缺货贵时订到 P75，积压贵时订到 P25，均值只在临界比例恰好 0.5 时才碰巧正确。[Ban 与 Rudin（*Operations Research* 2019）](https://pubsonline.informs.org/doi/10.1287/opre.2018.1771)把这个问题改写成特征化的监督学习：不做需求分布的估计再代入，而是把 $`q(x)`$ 直接写成特征 $`x`$ 的函数（分位数回归或 ERM），证明其统计性质并给出可规模化的求解算法；在一家电力公司的员工排班数据上，特征化决策相比公司现行方法把人力成本降低了约两成。这个例子给出 DFL 的第一个重要视角：**很多时候你不需要真的联合训练，需要的只是把监督目标从「预测需求均值」换成「预测最优决策对应的泛函」**——目标选对，两阶段已经赢了一半；DFL 进一步解决的是目标函数本身复杂到无法写成标准回归损失的情形。
+
 ## 3. 两种 Regret 必须分开
 
 ### 3.1 事后最优解：Hindsight oracle
@@ -297,6 +299,8 @@ H(s,u)=0,\qquad
 
 这个界比较的是同一个 d 下的软解与硬解，**不是在预测错误时相对于真实成本 c 的完整 regret 保证**。
 
+**$`\tau\log K`$ 到底多大——三组数字**。设成本以元计。$`K=3`$、$`\tau=1`$：松弛代价上界 $`\log 3\approx 1.10`$ 元；$`K=100`$、$`\tau=0.1`$：$`0.1\times\log 100\approx 0.46`$ 元；$`K=1000`$、$`\tau=1`$：$`\log 1000\approx 6.9`$ 元。这些上界意味着什么，取决于决策间隔 $`\Delta`$ 的量级：若最佳与次佳 action 的成本差只有 0.2 元，那么 $`K=3,\tau=1`$ 的松弛误差上界是间隔的 5 倍——**软解在间隔内的随机游走足以让硬决策完全偏离**；若间隔是 10 元，同样的松弛几乎无害。所以温度的选择从来不是「梯度好不好看」的数值问题，而是 $`\tau\log K`$ 与真实决策间隔的相对大小问题：先量间隔，再定温度。
+
 对于复杂组合约束，简单 softmax 无法自动保证预算、匹配或调度可行性；连续松弛后的解也可能需要舍入，舍入必须纳入评估。
 
 ## 8. 路线三：SPO+，不对离散 Argmin 直接求导
@@ -338,6 +342,8 @@ g_{\mathrm{SPO+}}
 原论文的一个 Fisher consistency 定理使用条件成本分布的中心对称性、连续性、可行域非空内部，以及条件均值最优解唯一等假设，见论文 Assumption 1 与 Theorem 1。任意偏斜分布、退化可行域或受限预测模型不自动适用。具体结论须按论文的损失定义与正则条件理解。
 
 ## 9. 路线四：黑盒求解器与随机扰动
+
+前面三条路线（隐式微分、正则化松弛、SPO+）都要求能改写优化问题本身。接下来的路线转换思路：**求解器是黑盒、不许改**——按本文的分类语言，五条路线各自修改的对象是：路线一改「优化问题」，路线二改「解映射」，路线三改「损失函数」，路线四与路线五改「梯度估计方式」。
 
 ### 9.1 黑盒反向传播
 
@@ -448,6 +454,8 @@ J_{z_\sigma}(u)
 ```
 
 第二项是模型类的近似误差；第一项还要分析有限样本估计和训练优化误差。之后才通过适用的校准关系转成决策风险。
+
+**把金币案例代进分解式走一遍。** 三档金币的真实价值间隔 $`\Delta=0.05`$（1.80 与 1.75，见金币篇 §3.1）。假设两阶段基线的价值预测误差 $`\epsilon=0.06`$，则 regret 界 $`2\epsilon=0.12>\Delta`$——界不能排除选错，与实测有决策损失一致。现在做一项改进：把近似误差从 0.04 压到 0.01（换了表达力更强的模型类，第二项下降），但估计误差从 0.02 升到 0.05（参数更多、单样本信息更少，第一项上升），合计 $`\epsilon`$ 反而从 0.06 变成 0.06——**分解式的两项交换，总量纹丝不动**。这就是误差分解的价值：它逼你回答「我的改进到底改的是哪一项」，避免用「模型更强了」掩盖估计方差的恶化。DFL 的增删也应先按这个分解定位：它压的是近似误差（决策几何监督）还是估计误差（无），答案决定预期。
 
 此外，还有求解器近似、软硬决策差异、收益测量误差和分布漂移。这些不一定能简单相加成一个普适界，但都应该单独诊断。
 
@@ -566,18 +574,18 @@ L(\theta)=L_{\mathrm{pred}}(\theta)
 
 下表年份以所列会议 / 正式版本为主；arXiv 首次提交年份可能更早。
 
-| 顺序 | 论文 | 阅读重点 |
-| --- | --- | --- |
-| 1 | Mandi et al., 2024, *Decision-Focused Learning: Foundations, State of the Art, Benchmark and Future Opportunities* | 先建立方法地图，区分优化层与损失 surrogate |
-| 2 | Wilder, Dilkina & Tambe, AAAI 2019, *Melding the Data-Decisions Pipeline* | 理解预测与组合优化联合训练的动机 |
-| 3 | Elmachtoub & Grigas, Management Science 2022, *Smart “Predict, then Optimize”* | SPO、SPO+、oracle 次梯度与一致性条件 |
-| 4 | Amos & Kolter, ICML 2017, *OptNet* | 用最优性条件对二次规划层求导 |
-| 5 | Agrawal et al., NeurIPS 2019, *Differentiable Convex Optimization Layers* | 通用参数化凸优化层 |
-| 6 | Vlastelica et al., ICLR 2020, *Differentiation of Blackbox Combinatorial Solvers* | 黑盒离散求解器的反向机制 |
-| 7 | Berthet et al., NeurIPS 2020, *Learning with Differentiable Perturbed Optimizers* | 随机扰动、平滑与梯度估计 |
-| 8 | Liu & Grigas, NeurIPS 2021, *Risk Bounds and Calibration for a Smart Predict-then-Optimize Method* | 超额风险转换与几何 / 分布条件 |
-| 9 | Mandi et al., ICML 2022, *Decision-Focused Learning: Through the Lens of Learning to Rank* | 候选解的排序视角 |
-| 10 | Shah et al., NeurIPS 2022, *Decision-Focused Learning without Differentiable Optimization: Learning Locally Optimized Decision Losses* | 用局部学习损失替代直接可微求解 |
+| 顺序 | 论文 | 阅读重点 | 解决本文哪节的问题 |
+| --- | --- | --- | --- |
+| 1 | Mandi et al., 2024, *Decision-Focused Learning: Foundations, State of the Art, Benchmark and Future Opportunities* | 先建立方法地图，区分优化层与损失 surrogate | 全文地图（§5 的梯度困境） |
+| 2 | Wilder, Dilkina & Tambe, AAAI 2019, *Melding the Data-Decisions Pipeline* | 理解预测与组合优化联合训练的动机 | §1、§5 |
+| 3 | Elmachtoub & Grigas, Management Science 2022, *Smart “Predict, then Optimize”* | SPO、SPO+、oracle 次梯度与一致性条件 | §8 的凸 surrogate |
+| 4 | Amos & Kolter, ICML 2017, *OptNet* | 用最优性条件对二次规划层求导 | §6.1–6.2 |
+| 5 | Agrawal et al., NeurIPS 2019, *Differentiable Convex Optimization Layers* | 通用参数化凸优化层 | §6.2 |
+| 6 | Vlastelica et al., ICLR 2020, *Differentiation of Blackbox Combinatorial Solvers* | 黑盒离散求解器的反向机制 | §9.1（不改求解器拿梯度） |
+| 7 | Berthet et al., NeurIPS 2020, *Learning with Differentiable Perturbed Optimizers* | 随机扰动、平滑与梯度估计 | §9.2 |
+| 8 | Liu & Grigas, NeurIPS 2021, *Risk Bounds and Calibration for a Smart Predict-then-Optimize Method* | 超额风险转换与几何 / 分布条件 | §11.2 |
+| 9 | Mandi et al., ICML 2022, *Decision-Focused Learning: Through the Lens of Learning to Rank* | 候选解的排序视角 | §10（金币篇 §10.4 的出处） |
+| 10 | Shah et al., NeurIPS 2022, *Decision-Focused Learning without Differentiable Optimization: Learning Locally Optimized Decision Losses* | 用局部学习损失替代直接可微求解 | §10.2 |
 
 ### 原文链接
 
@@ -591,6 +599,10 @@ L(\theta)=L_{\mathrm{pred}}(\theta)
 8. [Risk Bounds and Calibration](https://arxiv.org/abs/2108.08887)
 9. [Through the Lens of Learning to Rank](https://proceedings.mlr.press/v162/mandi22a.html)
 10. [Learning Locally Optimized Decision Losses](https://arxiv.org/abs/2203.16067)
+
+### 谱系定位与量化出口
+
+DFL 不是孤岛。在更广的 **contextual optimization** 谱系里（Sadana et al., [A survey of contextual optimization, *EJOR* 2025](https://arxiv.org/abs/2303.16503)），它处于「预测模型与优化问题强耦合」的一端，与「点估计 + 稳健优化」「分布回归 + 随机规划」等方法并列；读该综述可以看清 DFL 的增益边界——数据到决策的整条链路里，耦合带来的梯度信号只是其中一种信息通道。量化方向的出口可看 Costa & Iyengar（[Distributionally robust end-to-end portfolio construction, *Quantitative Finance* 2023](https://arxiv.org/abs/2106.07035)）：把组合构建的优化目标直接嵌进训练，并用分布鲁棒化对抗预测误差——这是 §14.1 表中「线性目标 + 完整成本」在金融数据上的落地形态。可复现基准与代码库见 [PyEPO](https://github.com/khalil-oik/PyEPO)（与 Mandi et al. 2024 的 benchmark 配套），把本文五条路线在统一任务上跑对比。
 
 ## 17. 记住这条主线
 
